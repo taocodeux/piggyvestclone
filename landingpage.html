@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            background-color: rgb(242,247,248);
+            width: 100%;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar{
+            max-width: 100%;
+            height: 90px;
+            background-color: transparent;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+        }
+        .scrolled-color {
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .navbar-brand{
+            background-color: transparent;
+            padding-left: 30px;
+        }
+        .nav-link{
+            font-size: 16px;
+            font-weight: 600;
+            color: rgb(60,78,95);
+        }
+        .btn-outline-dark:hover {
+            color: #fff;
+        }
+        .nav-btn{
+            gap: 10px;
+            width: 37%;
+        }
+        .btn{
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .navbar-nav{
+            gap: 10px;
+            margin-left: -10px;
+        }
+        .main-container{
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .landingpagegirl{
+            width: 500px;
+            height: auto;
+            position: relative;
+            animation: moveUpDown 2s infinite alternate;
+        }
+        @keyframes moveUpDown{
+            0%{
+                top: 0;
+            }
+            100%{
+                top: 70px;
+            }
+        }
+        .first-dom{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 200px 85px 0px 90px;
+        }
+        .l-font{
+            color: rgb(18,34,49);
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 60px;
+        }
+        .s-fonts{
+            color: rgb(18,34,49);
+            font-size: 20px;
+        }
+        .first-dom-lft{
+            width: 450px;
+        }
+        .first-dom-right{
+            max-width: 100%;
+        }
+        .download-btn{
+            background-color: rgb(18,34,49);
+            padding: 15px;
+            border-radius: 15px;
+            color: #fff;
+        }
+        .download-btn:hover{
+            background-color: #000;
+            transform: translateY(-10px);
+            transition: 0.5s ease-out
+        }
+        .first-dom-btn{
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .svg{
+            width: 20px;
+            height: 20px;
+        }
+        .navbar-toggler {
+            margin-top: -200px;
+        }
+        .sec-dom{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 11% 69% 20%;
+            padding: 150px 80px 0px 90px;
+        }
+        .sec-p{
+            color: rgb(18,34,49);
+            font-size: 24px;
+            font-weight: 700;
+            text-align: start;
+        }
+        .sec-p1{
+            color: rgb(61,79,96);
+            font-size: 16px;
+            font-weight: 400;
+            text-align: start;
+        }
+        .sec-p2{
+            color: #000;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: start;
+            position: relative;
+            width: fit-content;
+        }
+        .sec-p2::after{
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0px;
+            height: 7px;
+            transition: width 0.3s ease-in-out;
+            background-color: rgb(171,183,202);
+        }
+        .sec-p2:hover::after{
+            width: 100%;
+        }
+        .third-dom{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+            align-items: center;
+            padding: 130px 80px 0px 90px;
+        }
+        .first-div{
+            width: 570px;
+        }
+        .third-dom-l{
+            font-size: 48px;
+            color: rgb(18,34,49);
+            font-weight: 700;
+            text-align: center;
+            margin: 0px 107.5px;
+            line-height: 66px;
+            letter-spacing: -0.48px;
+        }
+        .third-dom-s{
+            font-size: 24px;
+            color: rgb(18,34,49);
+            font-weight: 400;
+            text-align: center;
+            margin: 18px 107.5px 53px;
+            line-height: 35px;
+            letter-spacing: -0.48px;
+        }
+        .cards{
+            width: 570px;
+            height: 443px;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px 10px 30px 30px;
+            margin-bottom: 30px;
+            transition: background-color 0.7s ease-in-out;
+        } 
+        .c-1{
+            color: rgb(15,96,214);
+        }
+        .c-1:hover{
+            background-color: rgb(15,96,214);
+            color: #fff;
+        }
+        .c-2{
+            color: rgb(35,148,242);
+        }
+        .c-2:hover{
+            background-color: rgb(35,148,242);
+            color: #fff;
+        }
+        .c-3{
+            color: rgb(57,194,119);
+        }
+        .c-3:hover{
+            background-color: rgb(57,194,119);
+            color: #fff;
+        }
+        .c-4{
+            color: rgb(229,72,155);
+        }
+        .c-4:hover{
+            background-color: rgb(229,72,155);
+            color: #fff;
+        }
+        .c-5{
+            color: rgb(106, 107, 109);
+        }
+        .c-5:hover{
+            background-color: rgb(106, 107, 109);
+            color: #fff;
+        }
+        .cards:hover .sec-div-s {
+            color: #fff;
+        }
+        .sec-div-l{
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 42px;
+            margin: 25px 0px 0px;
+        }
+        .sec-div-s{
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            margin: 18px 0px 40px;
+            width: 60%;
+            color: rgb(18,34,49);
+        }
+        .third-p2{
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 27.2px;
+            width: fit-content;
+            position: relative;
+        }
+        .third-p2::after{
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0px;
+            height: 7px;
+            transition: width 0.3s ease-in-out;
+            background-color: rgb(171,183,202);
+        }
+        .third-p2:hover::after{
+            width: 100%;
+        }
+        .iphone-14{
+            width: 250px;
+            height: auto;
+            padding-right: 15px;
+            margin-top: -30px;
+            visibility: hidden;
+            transform: translateX(50px) translateY(50px);
+            transition: all 0.3s ease 0.3s;
+        }
+        .cards:hover .iphone-14{
+            visibility: visible;
+            transform: translateX(0) translateY(0);
+        }
+        .animated-phonediv{
+            display: flex;
+            justify-content: space-between;
+            align-items: self-end;
+        }
+        .forth-dom{
+            width: 100%;
+            height: auto;
+            background-color: white;
+            margin-top: 70px;
+            padding: 160px 25px;
+        }
+        .forth-dom-container{
+            width: 100%;
+            padding: 0 76px;
+            height: auto;
+        }
+        .forth-text-l{
+            font-size: 51px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 64.1px;
+            letter-spacing: -0.48px;
+        }
+        .forth-text-s{
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+            margin-top: -10px;
+            line-height: 33px;
+        }
+        .forth-dom-card{
+            width: 100%;
+            height: 500px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: rgb(121,19,229);
+            margin-top: 50px;
+            margin: 64px 0;
+        }
+        .forth-card-l{
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 50px;
+            color: #fff;
+        }
+        .forth-card-s{
+            width: 65%;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px; 
+            margin: 32px 0 0;     
+            color: #fff;   
+        }
+        .forth-p2{
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 27.2px;
+            width: fit-content;
+            position: relative;
+            color: #fff;
+            bottom: -180px;
+        }
+        .forth-p2::after{
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0px;
+            height: 7px;
+            transition: width 0.3s ease-in-out;
+            background-color: rgb(171,183,202);
+        }
+        .forth-p2:hover::after{
+            width: 100%;
+        }
+        .forth-lft{
+            width: 50%;
+            padding: 64px;
+        }
+        .forth-right{
+            width: 50%;
+            padding: 64px;
+        }
+        .iphoneinvest{
+            width: 450px;
+            height: 436px;
+        }
+        .fifth-dom{
+            width: 100%;
+            padding: 170px;
+        }
+        .fifth-dom-container{
+            width: 100%;
+            text-align: center;
+            display: grid;
+            place-items: center;
+        }
+        .fifth-dom-l{
+            font-size: 48px;
+            line-height: 64.1px;
+            font-weight: 700;
+        }
+        .fifth-dom-s{
+            width: 800px;
+            font-size: 24px;
+            line-height: 33px;
+            font-weight: 400;
+        }
+        .video{
+            width: fit-content;
+            margin-top: 70px;
+            border: 10px solid #fff;
+            border-radius: 20px;
+        }
+        .sixth-dom{
+            width: 100%;
+            padding: 100px 35px;
+        }
+        .sixth-dom-container{
+            width: 100%;
+            display: flex;
+            padding: 0 60px;
+            gap: 60px;
+            align-items: center;
+        }
+        .sixth-dom-l{
+            width: 550px;
+            font-size: 33px;
+            font-weight: 700;
+            line-height: 41.21px;
+        }
+        .fallbackImg{
+            width: 450px;
+        }
+        .download-btn2{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 600;
+            width: 130px;
+            height: 40px;
+            border: 1px solid rgb(230, 227, 227);
+            border-radius: 10px;
+            margin-left: 10px;
+            background-color: transparent;
+        }
+        .download-btn2:hover{
+            border: 1px solid rgb(187, 187, 187);
+            transform: translateY(-10px);
+            transition: 0.5s ease-out
+         }
+         .seventh-dom{
+            background-color: #fff;
+            padding: 65px 16px;
+            width: 100%;
+         }
+         .seventh-dom-container{
+            width: 100%;
+        }
+        .seventh-l{
+            font-size: 33px;
+            line-height: 41.21px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .featured-b{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        .brands{
+            width: 150px;
+            height: auto;
+        }
+        .brands2{
+            width: 100px;
+            height: auto;
+        }
+        .brands3{
+            width: 70px;
+            height: auto;
+        }
+        footer{
+            width: 100%;
+            padding: 80px 72px 50px;
+            background-color: #fff;
+        }
+        .footer-container{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .footer-div{
+            text-align: left;
+            display: grid;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .footer-first{
+            margin-top: -130px;
+            margin-left: -30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer-last{
+            margin: 0 0 30px;
+            padding: 0 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            text-align: right;
+        }
+        .compliance{
+            width: 100px;
+            margin-top: -120px;
+        }
+        .footer-p{
+            font-size: 14px;
+            line-height: 22.08px;
+            margin: 0 0 8px;
+            font-weight: 700;
+        }
+        .footer-link{
+            font-size: 14px;
+            line-height: 22.08px;
+            margin: 0 0 8px;
+            font-weight: 300;
+            text-decoration: none;
+            color: #000;
+        }
+        .footer-link:hover{
+            color: rgb(13,96,216);
+        }
+        ul li{
+            list-style-type: none;
+        }
+        .download-btn3:hover{
+            transform: translateY(-10px);
+            transition: 0.5s ease-out
+        }
+        ul{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+        }
+        .add{
+            width: 300px;
+            margin-top: -5px;
+        }
+        .add2{
+            width: 300px;
+            margin-top: 10px;
+        }
+        .hr{
+            width: 100%;
+            border-top:1px solid rgb(221,221,221);       
+        }
+        .footer-last-p1{
+            text-align: start;
+            font-size: 11px;
+            line-height: 22px;
+            margin: 30px 0 31px;
+            font-weight: 400;
+            color: rgba(61,79,96,0.65);
+            width: 660px;
+        }
+        .footer-last-p2{
+            text-align: start;
+            font-size: 11px;
+            line-height: 22px;
+            margin: 0 0 12px;
+            font-weight: 400;
+            color: rgba(61,79,96,0.65);
+            width: 450px;
+        }
+        .footer-last-p3{
+            text-align: start;
+            font-size: 11px;
+            line-height: 27.2px;
+            font-weight: 400;
+            color: rgb(8,62,158);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <nav class="navbar navbar-expand-lg fixed-top bg-transparent" id="navbar">
+            <div class="container">
+                <img src="image-removebg-preview.png" alt="" class="navbar-brand">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <span class="nav-link">Save</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link">Invest</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link">Stories</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link">FAQs</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link">Resources</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-btn collapse navbar-collapse" id="navbarNav">
+                <button class="btn btn-outline-dark btn-lg">
+                    Sign in
+                </button>
+                <button class="btn btn-dark btn-lg">
+                    Create free account
+                </button>
+            </div>
+        </nav>
+        <section class="first-dom">
+            <div class="first-dom-lft">
+                <p class="l-font">The Better Way to Save & Invest</p class="l-font">
+                <p class="s-fonts">Piggyvest helps over 4 million customers achieve their financial goals by helping them save and invest with ease.</p>
+                <div class="first-dom-btn">
+                    <button class="btn btn-dark btn-lg download-btn"><img src="apple.svg" alt="" class="svg"> Get on iphone</button>
+                    <button class="btn btn-dark btn-lg download-btn"><img src="playstore.svg" alt="" class="svg"> Get on Andriod</button>
+                </div>
+            </div>
+            <div class="first-dom-right">
+                <img src="landingpagegirl.avif" alt="" class="landingpagegirl">
+            </div>
+        </section>
+        <section class="sec-dom">
+            <div class="sec-dom-lft">
+                <img src="securitylock.svg" alt="" class="sec-dom-img">
+            </div>
+            <div class="sec-dom-right">
+                <p class="sec-p">Your security is our priority</p>
+                <p class="sec-p1">PiggyVest uses the highest level of Internet Security and it is secured by 256 bits SSL security encryption to ensure that your information is comepletely protected from fraud.</p>
+                <p class="sec-p2">More on our security measures</p>
+            </div>
+        </section>
+        <section class="third-dom">
+            <div class="first-div">
+                <p class="third-dom-l">5 ways to build your savings </p>
+                <p class="third-dom-s">Earn 5%-15% when you save with any of these PiggyVest plans.</p>
+            </div>
+            <div class="cards c-1">
+                <p class="sec-div-l">Automated Savings</p>
+                <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
+                <div class="animated-phonediv">
+                    <p class="third-p2">Piggybank</p>
+                    <img src="iPhone 14-11.avif" alt="" class="iphone-14">
+                </div>
+            </div>
+            <div class="cards c-2">
+                <p class="sec-div-l">Automated Savings</p>
+                <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
+                <div class="animated-phonediv">
+                    <p class="third-p2">Piggybank</p>
+                    <img src="safelock.avif" alt="" class="iphone-14">
+                </div>
+            </div>
+            <div class="cards c-3">
+                <p class="sec-div-l">Automated Savings</p>
+                <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
+                <div class="animated-phonediv">
+                    <p class="third-p2">Piggybank</p>
+                    <img src="gaols.avif" alt="" class="iphone-14">
+                </div>
+            </div>
+            <div class="cards c-4">
+                <p class="sec-div-l">Automated Savings</p>
+                <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
+                <div class="animated-phonediv">
+                    <p class="third-p2">Piggybank</p>
+                    <img src="flexnaira.avif" alt="" class="iphone-14">
+                </div>
+            </div>
+            <div class="cards c-5">
+                <p class="sec-div-l">Automated Savings</p>
+                <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
+                <div class="animated-phonediv">
+                    <p class="third-p2">Piggybank</p>
+                    <img src="flex dollar.avif" alt="" class="iphone-14">
+                </div>
+            </div>
+        </section>
+        <section class="forth-dom">
+            <div class="forth-dom-container">
+                <p class="forth-text-l">Diverse ways to invest</p>
+                <p class="forth-text-s">Grow your money and invest for your future confidently.</p>
+                <div class="forth-dom-card">
+                    <div class="forth-lft">
+                        <p class="forth-card-l">Earn Up to 25% returns</p>
+                        <p class="forth-card-s">Invest securely and confidently on the go. Grow your money confidently by investing in pre-vetted investment opportunities.</p>
+                        <p class="forth-p2">Learn about investments</p>
+                    </div>
+                    <div class="forth-right">
+                        <img src="iphoneInvest.avif" alt="" class="iphoneinvest">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="fifth-dom">
+            <div class="fifth-dom-container">
+                <p class="fifth-dom-l">Meet Our Saver of the Month</p>
+                <p class="fifth-dom-s">Every month, we shine a spotlight on one saver, asking them about their savings culture and how piggyvest has helped them.</p>
+                <div class="video">
+                    <iframe width="791" height="445" src="https://www.youtube.com/embed/8XzCzC9pFGM" title="Saver of the month- June" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <section class="sixth-dom">
+            <div class="sixth-dom-container">
+                <img src="fallbackImg.png" alt="" class="fallbackImg">
+                <div class="sixth-dom-rgt">
+                    <p class="sixth-dom-l">Join 4+ million people who save and invest with us</p>
+                    <button class="download-btn2"><img src="apple-logo-black-isolated-on-transparent-background-free-vector.jpg" alt="" class="svg"> Get on iphone</button>
+                    <button class="download-btn2"><img src="playstore.svg" alt="" class="svg"> Get on Andriod</button>                  
+                </div>
+            </div>
+        </section>
+        <section class="seventh-dom">
+            <div class="seventh-dom-container">
+                <p class="seventh-l">As featured in</p>
+                <div class="featured-b">
+                    <img src="brand3.png" alt="" class="brands">
+                    <img src="brand2.png" alt="" class="brands">
+                    <img src="brand1.png" alt="" class="brands">
+                    <img src="pym-removebg-preview.svg" alt="" class="brands2">
+                    <img src="fast.svg" alt="" class="brands">
+                    <img src="cio.svg" alt="" class="brands3">
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-first">
+                    <img src="image-removebg-preview.png" alt="">
+                    <img src="compliance-8bdf7e9c17a7f431c8b467a0366132ac.webp" alt="" class="compliance">
+                </div>
+                <div class="footer-div">
+                    <p class="footer-p">Products</p>
+                    <a href="#" class="footer-link">Piggybank</a>
+                    <a href="#" class="footer-link">Invest</a>
+                    <a href="#" class="footer-link">Safelock</a>
+                    <a href="#" class="footer-link">Target Savings</a>
+                    <a href="#" class="footer-link">Flex Naira</a>
+                    <a href="#" class="footer-link">Flex Dollars</a>
+                </div>
+                <div class="footer-div">
+                    <p class="footer-p">Products</p>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">FAQs</a>
+                    <a href="#" class="footer-link">Blog</a>
+                </div>
+                <div class="footer-div">
+                    <p class="footer-p">Products</p>
+                    <a href="#" class="footer-link">Terms</a>
+                    <a href="#" class="footer-link">Privacy</a>
+                    <a href="#" class="footer-link">Security</a>
+                </div>
+                <div class="footer-last">
+                    <ul>
+                        <li><img src="fb svg.svg" alt="" class="download-btn3"></li>
+                        <li><img src="ig svg.svg" alt="" class="download-btn3"></li>
+                        <li><img src="twitter svg.svg" alt="" class="download-btn3"></li>
+                        <li><img src="tiktok svg.svg" alt="" class="download-btn3"></li>
+                        <li><img src="youtube svg.svg" alt="" class="download-btn3"></li>
+                    </ul>
+                    <a href="#" class="footer-link add">Tesmot house, Abdulrahman Okene close, Victoria Island, Lagos, Nigeria.</a>
+                    <a href="#" class="footer-link add2">contact@piggyvest.com</a>
+                    <a href="#" class="footer-link add2">+234 700 933 933 933</a>
+                </div>
+            </div>
+            <div class="hr">
+                <p class="footer-last-p1">Piggyvest (formerly piggybank.ng) is the leading online savings & investing platform in Nigeria. For over 7 years, our customers have saved and invested billions of Naira that they would normally be tempted to spend.</p>
+                <p class="footer-last-p2">PV Capital Limited is a fund manager duly licensed by the Securities and Exchange Commission (SEC) of Nigeria</p>
+                <p class="footer-last-p3">2016 - 2023 PiggyTech Global Limited - RC 1405222</p>
+            </div>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="landingpage.js"></script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piggy dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="../icofont/icofont.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <main class="d-flex">
+        <!-- home aside -->
+        <aside class="left position-sticky top-0">
+            <div class="menulogo d-flex align-items-center gap-4">
+                <i class="icofont-navigation-menu aside-icon"></i>
+                <img src="landing page images/piggyvest-logo.0b78a8fa.svg" alt="" class="logo">
+            </div>
+            <ul class="d-grid">
+                <button class="border-0 go-to-home" onclick="goToHomePage()">
+                    <li class="d-flex align-items-center gap-4 mb-5 fs-16">
+                        <i class="icofont-home aside-icon"></i>
+                        <span class="active">Home</span>
+                    </li>
+                </button>
+                <button class="border-0 go-to-savings" onclick="goToSavingsPage()">
+                    <li class="d-flex align-items-center gap-4 mb-5 fs-16">
+                        <i class="icofont-dart aside-icon"></i>
+                        <span class="active-savings">Savings</span>
+                    </li>
+                </button>
+                <li class="d-flex align-items-center gap-4 mb-5 fs-16">
+                    <i class="icofont-paper-plane aside-icon"></i>
+                    <span>Invest</span>
+                </li>
+                <button class="border-0 go-to-acct" onclick="goToAcctPage()">
+                    <li class="d-flex align-items-center gap-4 mb-5 fs-16">
+                        <i class="icofont-ui-user aside-icon"></i>
+                        <span class="active-acct">Account</span>
+                    </li>
+                </button>
+            </ul>
+            <div class="logout d-flex align-items-center gap-4 fs-16 cursor-pointer" onclick="logOut()">
+                <i class="icofont-power aside-icon"></i>
+                <span>Logout</span>
+            </div>
+        </aside>
+        <div class="navdown">
+            <ul class="down">
+                <li class="navdown-li">
+                    <i class="icofont-home down-icon"></i>
+                    <p>Home</p>
+                </li>
+                <li class="navdown-li">
+                    <i class="icofont-dart down-icon"></i>
+                    <p>Savings</p>
+                </li>
+                <li class="navdown-li">
+                    <i class="icofont-paper-plane down-icon"></i>
+                    <p>Invest</p>
+                </li>
+                <li class="navdown-li">
+                    <i class="icofont-ui-user down-icon"></i>
+                    <p>Account</p>
+                </li>
+            </ul>
+        </div>
+        <!-- home page -->
+        <aside class="homePage overflow-y-scroll" id="homePage">
+            <header class="d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <h1 id="userfullName"></h1>
+                    <p class="joke">wash your hands, it's lunch time 🍛!</p>
+                </div>
+                <div>
+                    <img src="defaultimg.jpg" alt="" id="userProfile">
+                </div>
+            </header>
+            <section class="leftsection">
+                <div class="head d-flex align-items-center justify-content-between mb-2">
+                    <i class="icofont-refresh refresh"></i>
+                    <button class="btn btn-primary quick-save">+QUICK SAVE</button>
+                </div>
+                <div class="cardContainer overflow-x-scroll">
+                    <div class="cardScroll d-flex align-items-center">
+                        <div class="cardd fc">
+                            <div class="card-inner-div d-flex align-items-center gap-3">
+                                <i class="icofont-shield"></i>
+                                <div class="card-items-con d-grid">
+                                    <p class="cardtype">Total Savings</p>
+                                    <p class="cardamount">₦1,014,757.02</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardd sc">
+                            <div class="card-inner-div d-flex align-items-center gap-3">
+                                <i class="icofont-chart-histogram-alt"></i>
+                                <div class="card-items-con d-grid">
+                                    <p class="cardtype">Total Investments</p>
+                                    <p class="cardamount">₦0.00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardd tc">
+                            <div class="card-inner-div d-flex align-items-center gap-3">
+                                <i class="icofont-dollar"></i>
+                                <div class="card-items-con d-grid">
+                                    <p class="cardtype">Flex Dollar</p>
+                                    <p class="cardamount">$0.00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardd ftc">
+                            <div class="card-inner-div d-flex align-items-center gap-3">
+                                <i class="icofont-film"></i>
+                                <div class="card-items-con d-grid">
+                                    <p class="cardtypes">Flex Naira</p>
+                                    <p class="cardamounts">₦198,600.06</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardd fftc">
+                            <div class="card-inner-div d-flex align-items-center gap-3">
+                                <i class="icofont-ui-email emailat"></i>
+                                <div class="card-items-con d-grid">
+                                    <p class="cardtype">Pocket App</p>
+                                    <p class="cardamount">₦23,400.07</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section-todo d-flex justify-content-between w-100 gap-7">
+                <div class="saverdiv order-md-2 flex-grow-1">
+                    <p class="saver-of-d-m">SAVER OF THE MONTH: TOLA</p>
+                    <img src="savergal.jpeg" alt="" class="savergal">
+                </div>
+                <div class="saverdiv order-md-1 flex-grow-1">
+                    <p class="saver-of-d-m">to-do list</p>
+                    <div class="tododiv d-grid gap-3">
+                        <div class="todo-cards t-c-1 d-flex align-items-center gap-2">
+                            <i class="icofont-check-circled fs-4"></i>
+                            <span class="safelockp">Safelock ₦248,606 for 90 days</span>
+                        </div>
+                        <div class="todo-cards t-c-2 d-flex align-items-center gap-2">
+                            <i class="icofont-thumbs-up fs-4"></i>
+                            <div class="d-grid gap-1">
+                                <p class="recent-act1">See your recent activities</p>
+                                <p class="recent-act2">See your most recent activities on PiggyVest</p>
+                            </div>
+                        </div>
+                        <div class="todo-cards t-c-3 d-flex align-items-center gap-2"> 
+                            <i class="icofont-lock fs-4"></i>
+                            <div class="d-grid">
+                                <p class="recent-act3">See your recent activities</p>
+                                <p class="recent-act2">See your most recent activities on PiggyVest</p>
+                            </div>
+                        </div>
+                        <div class="todo-cards t-c-4  d-flex align-items-center gap-2">
+                            <i class="icofont-ui-email emailat2 fs-4"></i>
+                            <div class="d-grid">
+                                <p class="recent-act4">See your recent activities</p>
+                                <p class="recent-act2">See your most recent activities on PiggyVest</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section-todo d-flex justify-content-between w-100 gap-7">
+                <div class="saverdiv order-md-2 flex-grow-1">
+                    <p class="saver-of-d-m">DOWNLOAD THE MOBILE APP</p>
+                    <div class="btn-img-div d-flex align-items-center gap-4">
+                        <img src="download on apple btn.png" alt="" class="btn-img">
+                        <img src="download on g btn.png" alt="" class="btn-img">
+                    </div>
+                    <p class="saver-of-d-m mt-4">#MEETAPIGGYVESTSAVER: TOLANI AYENI</p>
+                    <img src="savergal.jpeg" alt="" class="savergal">
+                </div>
+                <div class="saverdiv order-md-1 flex-grow-1">
+                    <p class="saver-of-d-m">recent activities</p>
+                    <div class="tododiv d-grid gap-3">
+                        <div class="recent-cards d-flex align-items-center gap-2">
+                            <div class="stardiv">
+                                <i class="icofont-star fs-8"></i>
+                            </div>
+                            <div class="d-grid gap-1">
+                                <p class="recent-point1">Point Credited</p>
+                                <p class="recent-point2">6 days ago</p>
+                            </div>
+                        </div>
+                        <div class="recent-cards d-flex align-items-center gap-2">
+                            <div class="stardiv">
+                                <i class="icofont-star fs-8"></i>
+                            </div>
+                            <div class="d-grid gap-1">
+                                <p class="recent-point1">Point Credited</p>
+                                <p class="recent-point2">6 days ago</p>
+                            </div>
+                        </div>
+                        <div class="recent-cards d-flex align-items-center gap-2">
+                            <div class="stardiv">
+                                <i class="icofont-star fs-8"></i>
+                            </div>
+                            <div class="d-grid gap-1">
+                                <p class="recent-point1">Point Credited</p>
+                                <p class="recent-point2">6 days ago</p>
+                            </div>
+                        </div>
+                        <div class="recent-cards d-flex align-items-center gap-2">
+                            <div class="stardiv">
+                                <i class="icofont-star fs-8"></i>
+                            </div>
+                            <div class="d-grid gap-1">
+                                <p class="recent-point1">Point Credited</p>
+                                <p class="recent-point2">6 days ago</p>
+                            </div>
+                        </div>
+                        <div class="recent-cards d-flex align-items-center gap-2">
+                            <div class="stardiv">
+                                <i class="icofont-star fs-8"></i>
+                            </div>
+                            <div class="d-grid gap-1">
+                                <p class="recent-point1">Point Credited</p>
+                                <p class="recent-point2">6 days ago</p>
+                            </div>
+                        </div>
+                        <div class="last-card">
+                            <span>view more activities</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+        
+        <!-- account-page -->
+        <aside class="account-page overflow-y-scroll position-relative" id="account-page">
+            <div class="header-div">
+                <p class="header-p">My Account</p>
+                <p class="name-p" id="name-p"></p>
+            </div>
+            <div class="cover-div-acct d-flex justify-content-between w-100">
+                <div class="leftacct-div order-md-1 flex-grow-1">
+                    <img src="Saving-dark_v1.png" alt="" class="savings-dark">
+                    <div class="left-card-div d-grid gap-3 mt-5">
+                        <div class="left-card d-flex align-items-center gap-2" id="leftCard" onclick="showModal()">
+                            <i class="icofont-user user-icon"></i>
+                            <span class="acct-settings">My Profile Settings</span>
+                        </div>
+                        <div class="modal-div" id="modalDiv">
+                            <div class="nav-modal w-100 d-flex">
+                                <i class="icofont-close" id="close-modal-div" onclick="closeTheModalDiv()"></i>
+                            </div>
+                            <div class="form-acct-div">
+                                <p class="title-modal">Basic Data</p>
+                                <form action="" class="d-grid">
+                                    <label for="avatar-img" class="edit-label mt-4">Change your avatar</label>
+                                    <div class="d-flex align-items-center gap-3 img-span">
+                                        <img src="defaultimg.jpg" alt="" id="changed-acct-dp" class="changed-acct-dp">
+                                        <label for="edit-picture-modal">
+                                        <span class="t-to-change">Tap to Change</span>
+                                        <input type="file" id="edit-picture-modal" class="d-none" onchange="changeDp(event)">
+                                        </label>
+                                    </div>
+                                    <label for="full-name-modal" class="edit-label">Full Name</label>
+                                    <input type="text" id="full-name-modal" class="changed-input"  value="">
+                                    <label for="email-modal" class="edit-label">Email Address</label>
+                                    <input type="email" id="email-modal" class="changed-input">
+                                    <label for="password-modal" class="edit-label">Password</label>
+                                    <input type="" id="password-modal" class="changed-input">
+                                    <label for="number-modal" class="edit-label">Phone Number</label>
+                                    <input type="number" id="number-modal" class="changed-input">
+                                </form>
+                            </div>
+                            <div class="footer-modal d-grid">
+                                <p class="foot-p w-100">
+                                    You can only change your picture with this form. To change your account information please send an email contact@piggyvest.com.
+                                </p>
+                                <button class=" btn btn-primary btn-lg w-100" id="foot-btn" onclick="saveNewDetails()">
+                                    UPDATE PROFILE
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="left-card d-flex align-items-center gap-2">
+                            <i class="icofont-money user-icon"></i>
+                            <span class="acct-settings">Today's Rates</span>
+                        </div>
+                        <div class="left-card d-flex align-items-center gap-2">
+                            <i class="icofont-help-robot user-icon"></i>
+                            <span class="acct-settings">Self-Help</span>
+                        </div>
+                        <div class="left-card d-flex align-items-center gap-2">
+                            <i class="icofont-ui-home user-icon"></i>
+                            <span class="acct-settings">Update KYC</span>
+                        </div>
+                        <div class="left-card d-flex align-items-center gap-2">
+                            <i class="icofont-referee user-icon"></i>
+                            <span class="acct-settings">Refer & Earn</span>
+                        </div>
+                        <div class="left-card d-flex align-items-center gap-2">
+                            <i class="icofont-dollar user-icon"></i>
+                            <span class="acct-settings">Withdraw Funds</span>
+                        </div>
+                        <div class="left-card d-flex align-items-center gap-2">
+                            <i class="icofont-mastercard-alt user-icon"></i>
+                            <span class="acct-settings">My Card & Bank Settings</span>
+                        </div>
+                        <div class="left-card d-flex align-items-center gap-2">
+                            <i class="icofont-library user-icon"></i>
+                            <span class="acct-settings">View PiggyVest Library</span>
+                        </div>
+                        <div class="left-card d-flex align-items-center gap-2">
+                            <i class="icofont-ui-call user-icon"></i>
+                            <span class="acct-settings">Contact Us</span>
+                        </div>
+                        <div class="left-card d-flex align-items-center gap-2" onclick="logOut()">
+                            <i class="icofont-logout user-icon-last"></i>
+                            <span class="acct-settings-last">Log Out</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightacct-div order-md-2 flex-grow-1">
+                    <div class="position-relative cover-img">
+                        <img src="defaultimg.jpg" alt="" class="acct-dp" id="acct-dp">
+                        <label for="profileInput" class="position-absolute label-img d-flex align-items-center justify-content-center">
+                            <i class="icofont-picasa fs-4"></i>
+                            <input type="file" id="profileInput" accept="image/*" onchange="changeDp(event)">
+                        </label>
+                    </div>
+                    <p id="useracctName" class="name-under text-center"></p>
+                    <div class="img-card-div d-flex flex-wrap gap-3">
+                        <div class="img-card">
+                            <p class="acct-number" id="acct-number"></p>
+                            <p class="acct-no-tx">Generated Account Number</p>
+                        </div>
+                        <div class="img-card">
+                            <p class="acct-number">666</p>
+                            <p class="acct-no-tx">Piggy Points</p>
+                        </div>
+                        <div class="img-card">
+                            <p class="acct-number"># Piggylink ID</p>
+                            <p class="acct-no-tx">Create a Piggylink ID</p>
+                        </div>
+                        <div class="img-card">
+                            <p class="acct-number">₦1,000</p>
+                            <p class="acct-no-tx">Referral Earnings</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- savings page -->
+        <aside class="savings-page overflow-y-scroll" id="savings-page">
+        </aside>
+    </main>
+    <script src="dashboard.js"></script>
+</body>
+</html>

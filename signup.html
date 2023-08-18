@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>piggyvest signup</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(6,40,99);
+            width: 100%;
+            overflow-x: hidden;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .main-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .piggy-logo{
+            padding-top: 40px;
+        }
+        .signin-div{
+            width: 450px;
+            height: auto;
+            background-color: #fff;
+            border-radius: 20px 20px 20px 0;
+            margin-top: 45px;
+            padding: 25px 40px 48px;
+        }
+        .h1{
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 700;
+            text-align: center;
+            color: #083e9e;
+            /* padding-top: 20px; */
+        }
+        .title{
+            color: #4a5568;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            margin-top: -18px;
+            /* margin-bottom: 35px; */
+        }
+        .inputform{
+            display: grid;
+            grid-template-columns: 1fr;
+            /* flex-direction: column; */
+            /* justify-content: center; */
+            align-items: center;
+            gap: 30px;
+        }
+        label{
+            font-size: 12px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #4A5568;
+            margin-top: 20px;
+        }
+        input, select{
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            /* justify-content: center; */
+            margin: -25px auto;
+            width: 100%;
+            height: 55px;
+            padding: 16px;
+            background-color: #EDF2F7;
+            border: none;
+            border-radius: 5px;
+            color: #000;
+            font-size: 14px; 
+            line-height: 24px;
+
+        }
+        /* select{
+            background-color: #EDF2F7; 
+            border: 1px solid #A3B0C2; 
+            border-radius: 5px;
+            color: #4A5568;
+            font-size: 14px; 
+            line-height: 24px;
+        } */
+        select option{
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            border: 1px solid grey;
+            /* height: auto; */
+            /* width: 100%; */
+            /* border-radius: 50px; */
+        }
+        ::placeholder{
+            color: #A3B0C2;
+            font-size: 14px;
+            line-height: 24px;
+            font-size: 400;
+        }
+        .submitform{
+            border-radius: 10px 10px 10px 0;
+            height: 50px;
+            border: none;
+            color: #fff;
+            background-color: #083e9e;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+        .submitform:hover{
+            background-color: #062B6F;
+        }
+        .haveacct{
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+        }
+        .haveacct:hover{
+            color:#81ACAB
+        }
+
+
+        @media (max-width:435px) {
+            .signin-div{
+                width: 350px;
+            }
+        }
+        @media (max-width: 393px) {
+            .signin-div {
+                width: 340px;
+                padding: 15px;
+            }
+            .h1 {
+                font-size: 20px;
+            }
+            .title {
+                font-size: 12px;
+            }
+            input,
+            select {
+                height: 45px;
+            }
+            label {
+                font-size: 10px;
+            }
+            }
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <img src="piggyvest-logo.0b78a8fa.svg" alt="" class="piggy-logo">
+        <div class="signin-div">
+            <h1 class="h1">Create a Secure Account</h1>
+            <p class="title">Welcome to the future of Savings & Investments</p>
+            <form action="" class="inputform">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="full-name" placeholder="Full Name" autocomplete="email" required>
+                <label for="Email Address">Email Address</label>
+                <input type="text" id="email-address" placeholder="Email Address" autocomplete="email" required>
+                <label for="Phone Number">Phone Number</label>
+                <input type="text" id="phone-number" placeholder="Phone Number" autocomplete="email" required>
+                <label for="Password">Password</label>
+                <input type="text" id="password" placeholder="Password" required>
+                <label for="Referrer Phone number or promo Code(Optional)">Referrer Phone Number or Promo Code(Optional)</label>
+                <input type="text" id="Refferer-code" placeholder="Referrer Phone Number or Code">
+                <label for="selectoptions"></label>
+                <select name="selectoptions" id="select-options">
+                    <option value="option1">Click to select</option>
+                    <option value="option2">Facebook</option>
+                    <option value="option3">Twitter</option>
+                    <option value="option4">Instagram</option>
+                    <option value="option5">Friends/Family/Coworker referral</option>
+                    <option value="option6">Google Search</option>
+                    <option value="option7">Google Playstore</option>
+                    <option value="option8">Online Blog</option>
+                    <option value="option9">Local Newspaper</option>
+                    <option value="option10">Other</option>
+                </select>
+                <button type="submit" class="submitform" onclick="sendSignUp(event)">CREATE ACCOUNT</button>
+            </form>
+        </div>
+        <a href="sign in.html" class="haveacct">Already have an account? Log in</a>
+    </div>
+    <script src="signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>piggyvest signin</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(6,40,99);
+            width: 100%;
+            overflow-x: hidden;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .main-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .piggy-logo{
+            padding-top: 40px;
+        }
+        .signin-div{
+            width: 450px;
+            height: auto;
+            background-color: #fff;
+            border-radius: 20px 20px 20px 0;
+            margin-top: 45px;
+            padding: 25px 40px 48px;
+        }
+        .h1{
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 700;
+            text-align: center;
+            color: #083e9e;
+            /* padding-top: 20px; */
+        }
+        .title{
+            color: #4a5568;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            margin-top: -18px;
+            /* margin-bottom: 35px; */
+        }
+        .inputform{
+            display: grid;
+            grid-template-columns: 1fr;
+            /* flex-direction: column; */
+            /* justify-content: center; */
+            align-items: center;
+            gap: 30px;
+        }
+        label{
+            font-size: 12px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #4A5568;
+            margin-top: 20px;
+        }
+        input{
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            /* justify-content: center; */
+            margin: -25px auto;
+            width: 100%;
+            height: 55px;
+            padding: 16px;
+            background-color: #EDF2F7;
+            border: none;
+            border-radius: 5px;
+            color: #000;
+            font-size: 14px; 
+            line-height: 24px;
+        }
+        ::placeholder{
+            color: #A3B0C2;
+            font-size: 14px;
+            line-height: 24px;
+            font-size: 400;
+        }
+        .submitform{
+            border-radius: 10px 10px 10px 0;
+            height: 50px;
+            border: none;
+            color: #fff;
+            background-color: #083e9e;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+        .submitform:hover{
+            background-color: #062B6F;
+        }
+        .haveacct{
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+        }
+        .haveacct:hover{
+            color:#81ACAB
+        }
+        .haveacct2{
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            margin-top: -30px;
+            margin-bottom: 50px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+        }
+        .haveacct2:hover{
+            color:#81ACAB
+        }
+
+
+        @media (max-width:435px) {
+            .signin-div{
+                width: 350px;
+            }
+        }
+        @media (max-width: 393px) {
+            .signin-div {
+                width: 340px;
+                padding: 15px;
+            }
+            .h1 {
+                font-size: 20px;
+            }
+            .title {
+                font-size: 12px;
+            }
+            input {
+                height: 45px;
+            }
+            label {
+                font-size: 10px;
+            }
+            }
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <img src="piggyvest-logo.0b78a8fa.svg" alt="" class="piggy-logo">
+        <div class="signin-div">
+            <h1 class="h1">Login to your account</h1>
+            <p class="title">Securely login to your PiggyVest</p>
+            <form action="" class="inputform">
+                <label for="email or PhoneNumber">Email or Phone Number</label>
+                <input type="email/number" id="emailInput" placeholder="Enter your Email or Phone Number" autocomplete="email" required>
+                <label for="Password">password</label>
+                <input type="password" id="passwordInput" placeholder="*************">
+                <button type="submit" class="submitform" onclick="loginToDash(event)">LOG IN</button>
+            </form>
+        </div>
+        <a href="signup.html" class="haveacct">Don't have an account? Register</a>
+        <a href="#" class="haveacct2">Forgot Password?</a>
+
+    </div>
+    <script src="signin.js"></script>
+</body>
+</html>

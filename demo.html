@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- Dashboard -->
+<div>
+  <h1>Welcome to Your Dashboard</h1>
+  <p>Username: <span id="username"></span></p>
+  <p>Email: <span id="email"></span></p>
+  <button id="editButton">Edit Details</button>
+  <div id="editForm" style="display: none;">
+      <label for="newUsername">New Username: </label>
+      <input type="text" id="newUsername"><br>
+      <label for="newEmail">New Email: </label>
+      <input type="email" id="newEmail"><br>
+      <button id="saveButton">Save Changes</button>
+  </div>
+</div>
+<script>
+
+let newUsernameInput = document.getElementById("newUsername");
+let newEmailInput = document.getElementById("newEmail");
+let saveButton = document.getElementById("saveButton");
+
+// Retrieve user information from local storage
+let users = JSON.parse(localStorage.getItem("myUsers")) || [];
+
+// Function to save changes to user information
+function saveChanges() {
+    users[currentUserIndex].userNames = newUsernameInput.value;
+    users[currentUserIndex].userEmail = newEmailInput.value;
+    localStorage.setItem("myUsers", JSON.stringify(users));
+    editForm.style.display = "none";
+    displayUserInfo();
+}
+
+// Function to display user information on the dashboard
+function displayUserInfo() {
+    // Display user information
+}
+
+// Manually trigger saving of changes
+saveButton.onclick = saveChanges;
+
+// Manually trigger initial display of user information
+displayUserInfo();
+
+
+</script>
+</body>
+</html>

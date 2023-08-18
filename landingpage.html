@@ -6,6 +6,9 @@
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        *{
+            box-sizing: border-box;
+        }
         body{
             background-color: rgb(242,247,248);
             width: 100%;
@@ -44,6 +47,21 @@
         .nav-btn{
             gap: 10px;
             width: 37%;
+        }
+        .signin-link{
+            border: none;
+            background: none;
+            color: #000;
+            text-decoration: none;
+        }
+        .signin-link:hover{
+            color: #fff;
+        }
+        .signup-link{
+            border: none;
+            background: none;
+            color: #fff;
+            text-decoration: none;
         }
         .btn{
             font-size: 16px;
@@ -574,13 +592,19 @@
             color: rgb(8,62,158);
             margin-bottom: 30px;
         }
+        @media (max-width: 393px) {
+            .navbar-brand{
+                margin-top: -110px;
+            }
+
+        }
     </style>
 </head>
 <body>
     <div class="main-container">
         <nav class="navbar navbar-expand-lg fixed-top bg-transparent" id="navbar">
             <div class="container">
-                <img src="image-removebg-preview.png" alt="" class="navbar-brand">
+                <img src="landing page images/image-removebg-preview.png" alt="" class="navbar-brand">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -607,29 +631,29 @@
             </div>
             <div class="nav-btn collapse navbar-collapse" id="navbarNav">
                 <button class="btn btn-outline-dark btn-lg">
-                    Sign in
+                    <a href="sign in.html" class="signin-link">Sign in</a>
                 </button>
                 <button class="btn btn-dark btn-lg">
-                    Create free account
+                    <a href="signup.html" class="signup-link">Create free account</a>
                 </button>
             </div>
         </nav>
         <section class="first-dom">
             <div class="first-dom-lft">
-                <p class="l-font">The Better Way to Save & Invest</p class="l-font">
+                <p class="l-font">The Better Way to Save & Invest</p>
                 <p class="s-fonts">Piggyvest helps over 4 million customers achieve their financial goals by helping them save and invest with ease.</p>
                 <div class="first-dom-btn">
-                    <button class="btn btn-dark btn-lg download-btn"><img src="apple.svg" alt="" class="svg"> Get on iphone</button>
-                    <button class="btn btn-dark btn-lg download-btn"><img src="playstore.svg" alt="" class="svg"> Get on Andriod</button>
+                    <button class="btn btn-dark btn-lg download-btn"><img src="landing page images/apple.svg" alt="" class="svg"> Get on iphone</button>
+                    <button class="btn btn-dark btn-lg download-btn"><img src="landing page images/playstore.svg" alt="" class="svg"> Get on Andriod</button>
                 </div>
             </div>
             <div class="first-dom-right">
-                <img src="landingpagegirl.avif" alt="" class="landingpagegirl">
+                <img src="landing page images/landingpagegirl.avif" alt="" class="landingpagegirl">
             </div>
         </section>
         <section class="sec-dom">
             <div class="sec-dom-lft">
-                <img src="securitylock.svg" alt="" class="sec-dom-img">
+                <img src="landing page images/securitylock.svg" alt="" class="sec-dom-img">
             </div>
             <div class="sec-dom-right">
                 <p class="sec-p">Your security is our priority</p>
@@ -647,7 +671,7 @@
                 <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
                 <div class="animated-phonediv">
                     <p class="third-p2">Piggybank</p>
-                    <img src="iPhone 14-11.avif" alt="" class="iphone-14">
+                    <img src="landing page images/iPhone 14-11.avif" alt="" class="iphone-14" id="iphone14">
                 </div>
             </div>
             <div class="cards c-2">
@@ -655,7 +679,7 @@
                 <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
                 <div class="animated-phonediv">
                     <p class="third-p2">Piggybank</p>
-                    <img src="safelock.avif" alt="" class="iphone-14">
+                    <img src="landing page images/safelock.avif" alt="" class="iphone-14" id="iphone14">
                 </div>
             </div>
             <div class="cards c-3">
@@ -663,7 +687,7 @@
                 <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
                 <div class="animated-phonediv">
                     <p class="third-p2">Piggybank</p>
-                    <img src="gaols.avif" alt="" class="iphone-14">
+                    <img src="landing page images/gaols.avif" alt="" class="iphone-14" id="iphone14">
                 </div>
             </div>
             <div class="cards c-4">
@@ -671,7 +695,7 @@
                 <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
                 <div class="animated-phonediv">
                     <p class="third-p2">Piggybank</p>
-                    <img src="flexnaira.avif" alt="" class="iphone-14">
+                    <img src="landing page images/flexnaira.avif" alt="" class="iphone-14" id="iphone14">
                 </div>
             </div>
             <div class="cards c-5">
@@ -679,7 +703,7 @@
                 <p class="sec-div-s">Build a dedicated savings faster on your terms,automatically or manually</p>
                 <div class="animated-phonediv">
                     <p class="third-p2">Piggybank</p>
-                    <img src="flex dollar.avif" alt="" class="iphone-14">
+                    <img src="landing page images/flex dollar.avif" alt="" class="iphone-14" id="iphone14">
                 </div>
             </div>
         </section>
@@ -694,7 +718,7 @@
                         <p class="forth-p2">Learn about investments</p>
                     </div>
                     <div class="forth-right">
-                        <img src="iphoneInvest.avif" alt="" class="iphoneinvest">
+                        <img src="landing page images/iphoneInvest.avif" alt="" class="iphoneinvest">
                     </div>
                 </div>
             </div>
@@ -710,11 +734,11 @@
         </section>
         <section class="sixth-dom">
             <div class="sixth-dom-container">
-                <img src="fallbackImg.png" alt="" class="fallbackImg">
+                <img src="landing page images/fallbackImg.png" alt="" class="fallbackImg">
                 <div class="sixth-dom-rgt">
                     <p class="sixth-dom-l">Join 4+ million people who save and invest with us</p>
-                    <button class="download-btn2"><img src="apple-logo-black-isolated-on-transparent-background-free-vector.jpg" alt="" class="svg"> Get on iphone</button>
-                    <button class="download-btn2"><img src="playstore.svg" alt="" class="svg"> Get on Andriod</button>                  
+                    <button class="download-btn2"><img src="landing page images/apple-logo-black-isolated-on-transparent-background-free-vector.jpg" alt="" class="svg"> Get on iphone</button>
+                    <button class="download-btn2"><img src="landing page images/playstore.svg" alt="" class="svg"> Get on Andriod</button>                  
                 </div>
             </div>
         </section>
@@ -722,20 +746,20 @@
             <div class="seventh-dom-container">
                 <p class="seventh-l">As featured in</p>
                 <div class="featured-b">
-                    <img src="brand3.png" alt="" class="brands">
-                    <img src="brand2.png" alt="" class="brands">
-                    <img src="brand1.png" alt="" class="brands">
-                    <img src="pym-removebg-preview.svg" alt="" class="brands2">
-                    <img src="fast.svg" alt="" class="brands">
-                    <img src="cio.svg" alt="" class="brands3">
+                    <img src="landing page images/brand3.png" alt="" class="brands">
+                    <img src="landing page images/brand2.png" alt="" class="brands">
+                    <img src="landing page images/brand1.png" alt="" class="brands">
+                    <img src="landing page images/pym-removebg-preview.svg" alt="" class="brands2">
+                    <img src="landing page images/fast.svg" alt="" class="brands">
+                    <img src="landing page images/cio.svg" alt="" class="brands3">
                 </div>
             </div>
         </section>
         <footer>
             <div class="footer-container">
                 <div class="footer-first">
-                    <img src="image-removebg-preview.png" alt="">
-                    <img src="compliance-8bdf7e9c17a7f431c8b467a0366132ac.webp" alt="" class="compliance">
+                    <img src="landing page images/image-removebg-preview.png" alt="">
+                    <img src="landing page images/compliance-8bdf7e9c17a7f431c8b467a0366132ac.webp" alt="" class="compliance">
                 </div>
                 <div class="footer-div">
                     <p class="footer-p">Products</p>
@@ -760,11 +784,11 @@
                 </div>
                 <div class="footer-last">
                     <ul>
-                        <li><img src="fb svg.svg" alt="" class="download-btn3"></li>
-                        <li><img src="ig svg.svg" alt="" class="download-btn3"></li>
-                        <li><img src="twitter svg.svg" alt="" class="download-btn3"></li>
-                        <li><img src="tiktok svg.svg" alt="" class="download-btn3"></li>
-                        <li><img src="youtube svg.svg" alt="" class="download-btn3"></li>
+                        <li><img src="landing page images/fb svg.svg" alt="" class="download-btn3"></li>
+                        <li><img src="landing page images/ig svg.svg" alt="" class="download-btn3"></li>
+                        <li><img src="landing page images/twitter svg.svg" alt="" class="download-btn3"></li>
+                        <li><img src="landing page images/tiktok svg.svg" alt="" class="download-btn3"></li>
+                        <li><img src="landing page images/youtube svg.svg" alt="" class="download-btn3"></li>
                     </ul>
                     <a href="#" class="footer-link add">Tesmot house, Abdulrahman Okene close, Victoria Island, Lagos, Nigeria.</a>
                     <a href="#" class="footer-link add2">contact@piggyvest.com</a>

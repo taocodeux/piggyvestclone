@@ -45,29 +45,9 @@
                 <span>Logout</span>
             </div>
         </aside>
-        <div class="navdown">
-            <ul class="down">
-                <li class="navdown-li">
-                    <i class="icofont-home down-icon"></i>
-                    <p>Home</p>
-                </li>
-                <li class="navdown-li">
-                    <i class="icofont-dart down-icon"></i>
-                    <p>Savings</p>
-                </li>
-                <li class="navdown-li">
-                    <i class="icofont-paper-plane down-icon"></i>
-                    <p>Invest</p>
-                </li>
-                <li class="navdown-li">
-                    <i class="icofont-ui-user down-icon"></i>
-                    <p>Account</p>
-                </li>
-            </ul>
-        </div>
         <!-- home page -->
         <aside class="homePage overflow-y-scroll" id="homePage">
-            <header class="d-flex justify-content-between align-items-center mb-2">
+            <header class="header-home d-flex justify-content-between align-items-center mb-2">
                 <div>
                     <h1 id="userfullName"></h1>
                     <p class="joke">wash your hands, it's lunch time 🍛!</p>
@@ -85,7 +65,7 @@
                     <div class="cardScroll d-flex align-items-center">
                         <div class="cardd fc">
                             <div class="card-inner-div d-flex align-items-center gap-3">
-                                <i class="icofont-shield"></i>
+                                <i class="icofont-shield home-icon"></i>
                                 <div class="card-items-con d-grid">
                                     <p class="cardtype">Total Savings</p>
                                     <p class="cardamount">₦1,014,757.02</p>
@@ -94,7 +74,7 @@
                         </div>
                         <div class="cardd sc">
                             <div class="card-inner-div d-flex align-items-center gap-3">
-                                <i class="icofont-chart-histogram-alt"></i>
+                                <i class="icofont-chart-histogram-alt home-icon"></i>
                                 <div class="card-items-con d-grid">
                                     <p class="cardtype">Total Investments</p>
                                     <p class="cardamount">₦0.00</p>
@@ -103,7 +83,7 @@
                         </div>
                         <div class="cardd tc">
                             <div class="card-inner-div d-flex align-items-center gap-3">
-                                <i class="icofont-dollar"></i>
+                                <i class="icofont-dollar home-icon"></i>
                                 <div class="card-items-con d-grid">
                                     <p class="cardtype">Flex Dollar</p>
                                     <p class="cardamount">$0.00</p>
@@ -112,7 +92,7 @@
                         </div>
                         <div class="cardd ftc">
                             <div class="card-inner-div d-flex align-items-center gap-3">
-                                <i class="icofont-film"></i>
+                                <i class="icofont-film home-icon-pink"></i>
                                 <div class="card-items-con d-grid">
                                     <p class="cardtypes">Flex Naira</p>
                                     <p class="cardamounts">₦198,600.06</p>
@@ -121,7 +101,7 @@
                         </div>
                         <div class="cardd fftc">
                             <div class="card-inner-div d-flex align-items-center gap-3">
-                                <i class="icofont-ui-email emailat"></i>
+                                <i class="icofont-ui-email home-icon"></i>
                                 <div class="card-items-con d-grid">
                                     <p class="cardtype">Pocket App</p>
                                     <p class="cardamount">₦23,400.07</p>
@@ -354,7 +334,120 @@
 
         <!-- savings page -->
         <aside class="savings-page overflow-y-scroll" id="savings-page">
+            <header class="savings-header d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <h1 id="savings-header-h1">Savings</h1>
+                    <p class="joke">Let's see how well you're doing.</p>
+                </div>
+                <div>
+                    <img src="defaultimg.jpg" alt="" id="savingsdp">
+                </div>
+            </header>
+            <div class="bills-card-div d-flex flex-wrap flex-row justify-content-between align-items-center w-100">
+                <div class="bills-card1">
+                    <p class="card-total-bal">Total Balance</p>
+                    <p class="card-money" >₦1,014,757.02</p>
+                    <div class="accts-name-no-div d-flex justify-content-between align-items-center">
+                        <span>
+                            <p class="acct-name-tx">Account Name</p>
+                            <p id="card-acct-name"></p>
+                        </span>
+                        <span>
+                            <p class="savings-acct-no-tx">Account Number</p>
+                            <p id="card-acct-no"></p>
+                        </span>
+                    </div>
+                </div>
+                <div class="bills-card2 d-flex flex-wrap gap-3 align-items-center">
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-ui-add m-auto"></i>
+                            <figcaption>Add Money</figcaption>
+                        </div>
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-exchange m-auto"></i>
+                            <figcaption>Transfer</figcaption>
+                        </div>
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-pay m-auto"></i>
+                            <figcaption>Pay Bills</figcaption>
+                        </div>
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-history m-auto"></i>
+                            <figcaption>Transaction History</figcaption>
+                        </div>
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-file-text m-auto"></i>
+                            <figcaption>Generate Statement</figcaption>
+                        </div>
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-arrow-right m-auto"></i>
+                            <figcaption>More</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="big-card-div d-flex flex-wrap w-100 mt-5 mb-5">
+                <div class="big-card-container w-1000 d-flex flex-wrap gap-3">
+                    <div class="big-card">
+                        <i class="icofont-shield savings-icon1"></i>
+                        <p class="big-card-type1">Piggybank</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money1">₦900,152.92</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-film savings-icon2"></i>
+                        <p class="big-card-type2">Flex Naira</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money2">₦490,142.92</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-lock savings-icon3"></i>
+                        <p class="big-card-type3">Safelock</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money3">₦0.00</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-dart savings-icon4"></i>
+                        <p class="big-card-type4">Target</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money4">₦0.00</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-dollar savings-icon5"></i>
+                        <p class="big-card-type5">Flex Dollar</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money5">$0.00</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-ui-email savings-icon6"></i>
+                        <p class="big-card-type6">PocketApp</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money6">My pocket</p>
+                    </div>
+                </div>
+            </div>
         </aside>
+        <div class="navdown">
+            <ul class="down">
+                <li class="navdown-li" onclick="goToHomePage()">
+                    <i class="icofont-home" id="home-down"></i>
+                    <p id="home-p">Home</p>
+                </li>
+                <li class="navdown-li" onclick="goToSavingsPage()">
+                    <i class="icofont-dart" id="savings-down"></i>
+                    <p id="savings-p">Savings</p>
+                </li>
+                <li class="navdown-li">
+                    <i class="icofont-paper-plane" id="invest-down"></i>
+                    <p id="invest-p">Invest</p>
+                </li>
+                <li class="navdown-li" onclick="goToAcctPage()">
+                    <i class="icofont-ui-user" id="acct-down"></i>
+                    <p id="acct-p">Account</p>
+                </li>
+            </ul>
+        </div>
     </main>
     <script src="dashboard.js"></script>
 </body>

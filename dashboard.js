@@ -6,6 +6,7 @@ function updateDashboard(){
         document.getElementById("userfullName").innerHTML = `${verifiedUser.userNames},`
         document.getElementById("useracctName").innerHTML = `${verifiedUser.userNames}`
         document.getElementById("name-p").innerHTML = `${verifiedUser.userNames}`
+        document.getElementById("card-acct-name").innerHTML = `${verifiedUser.userNames}`
     } else{
         alert("no name found")
     }
@@ -23,11 +24,13 @@ function changeDp(event){
         let acctDp = document.getElementById("acct-dp")
         let changeacctdp = document.getElementById("changed-acct-dp")
         let editPictureModal = document.getElementById("edit-picture-modal")
+        let savingsDp = document.getElementById("savingsdp")
 
         userProfile.src = fileContentUrl
         acctDp.src = fileContentUrl  
         changeacctdp.src = fileContentUrl     
         editPictureModal.src = fileContentUrl  
+        savingsDp.src = fileContentUrl
         
         localStorage.setItem("userProfileImage",JSON.stringify(fileContentUrl))
     }
@@ -40,6 +43,7 @@ function dpStayOnLoad(){
     let acctDp = document.getElementById("acct-dp")
     let changeacctdp = document.getElementById("changed-acct-dp")
     let editPictureModal = document.getElementById("edit-picture-modal")
+    let savingsDp = document.getElementById("savingsdp")
     let storedImage = JSON.parse(localStorage.getItem("userProfileImage"))
 
     if(storedImage){
@@ -47,6 +51,7 @@ function dpStayOnLoad(){
         acctDp.src = storedImage
         changeacctdp.src = storedImage  
         editPictureModal.src = storedImage  
+        savingsDp.src = storedImage
     }
 }
 dpStayOnLoad()
@@ -60,33 +65,6 @@ function logOut(){
 }
 
 
-//display block the savings page
-function goToSavingsPage(){
-    let homePage = document.getElementById("homePage")
-    let accountPage = document.getElementById("account-page")
-    let savingsPage = document.getElementById("savings-page")
-    let activeAcct = document.getElementsByClassName("active-acct")[0]
-    let activeHome = document.getElementsByClassName("active")[0]
-    let activeSavings = document.getElementsByClassName("active-savings")[0]
-
-    savingsPage.style.display = "block"
-    accountPage.style.display = "none"
-    homePage.style.display = "none"
-    activeAcct.style.color = "#fff"
-    activeAcct.style.backgroundColor = "transparent"
-    activeAcct.style.padding = "0";
-    activeHome.style.color = "#fff"
-    activeHome.style.backgroundColor = "transparent"
-    activeHome.style.padding = "0";
-    activeSavings.style.color = "#083E9E"
-    activeSavings.style.backgroundColor = "#fff"
-    activeSavings.style.padding = "4px 40px 4px 24px"
-    activeSavings.style.borderRadius = "8px 8px 8px 0"
-
-    // localStorage.setItem("currentPage", JSON.stringify(savingsPage))
-    // localStorage.setItem("currentPage3", "savingsPage")
-}
-goToSavingsPage()
 
 //display block the home div
 function goToHomePage(){
@@ -96,6 +74,15 @@ function goToHomePage(){
     let activeAcct = document.getElementsByClassName("active-acct")[0]
     let activeHome = document.getElementsByClassName("active")[0]
     let activeSavings = document.getElementsByClassName("active-savings")[0]
+    let homeDown = document.getElementById("home-down")
+    let savingsDown = document.getElementById("savings-down")
+    let acctDown = document.getElementById("acct-down")
+    let homeP = document.getElementById("home-p")
+    let savingsP = document.getElementById("savings-p")
+    let acctP = document.getElementById("acct-p")
+
+
+
 
     homePage.style.display = "block"
     savingsPage.style.display = "none"
@@ -110,6 +97,15 @@ function goToHomePage(){
     activeSavings.style.color = "#fff"
     activeSavings.style.backgroundColor = "transparent"
     activeSavings.style.padding = "0";
+    homeDown.style.color = "#083E9E"
+    savingsDown.style.color = "#A0AEC0"
+    acctDown.style.color = "#A0AEC0"
+    homeP.style.color = "#2D3748"
+    savingsP.style.color ="#A0AEC0"
+    acctP.style.color ="#A0AEC0"
+
+
+
 
     // localStorage.setItem("currentPage", JSON.stringify(homePage))
     // localStorage.setItem("currentPage2", "homePage")
@@ -124,6 +120,16 @@ function goToAcctPage(){
     let activeAcct = document.getElementsByClassName("active-acct")[0]
     let activeSavings = document.getElementsByClassName("active-savings")[0]
     let activeHome = document.getElementsByClassName("active")[0]
+    let savingsDown = document.getElementById("savings-down")
+    let acctDown = document.getElementById("acct-down")
+    let homeDown = document.getElementById("home-down")
+    let homeP = document.getElementById("home-p")
+    let savingsP = document.getElementById("savings-p")
+    let acctP = document.getElementById("acct-p")
+    
+
+
+
 
     homePage.style.display = "none"
     savingsPage.style.display = "none"
@@ -138,12 +144,68 @@ function goToAcctPage(){
     activeAcct.style.backgroundColor = "#fff"
     activeAcct.style.padding = "4px 40px 4px 24px"
     activeAcct.style.borderRadius = "8px 8px 8px 0"
+    acctDown.style.color = "#083E9E"
+    homeDown.style.color = "#A0AEC0"
+    savingsDown.style.color = "#A0AEC0"
+    homeP.style.color = "#A0AEC0"
+    savingsP.style.color ="#A0AEC0"
+    acctP.style.color ="#2D3748"
+
+
+
 
     // localStorage.setItem("currentPage", JSON.stringify(accountPage))
     // localStorage.setItem("currentPage1", "accountPage")
 
 }
 goToAcctPage()
+
+
+//display block the savings page
+function goToSavingsPage(){ 
+    let homePage = document.getElementById("homePage")
+    let accountPage = document.getElementById("account-page")
+    let savingsPage = document.getElementById("savings-page")
+    let activeAcct = document.getElementsByClassName("active-acct")[0]
+    let activeHome = document.getElementsByClassName("active")[0]
+    let activeSavings = document.getElementsByClassName("active-savings")[0]
+    let savingsDown = document.getElementById("savings-down")
+    let homeDown = document.getElementById("home-down")
+    let acctDown = document.getElementById("acct-down")
+    let homeP = document.getElementById("home-p")
+    let savingsP = document.getElementById("savings-p")
+    let acctP = document.getElementById("acct-p")
+
+
+
+
+    savingsPage.style.display = "block"
+    accountPage.style.display = "none"
+    homePage.style.display = "none"
+    activeAcct.style.color = "#fff"
+    activeAcct.style.backgroundColor = "transparent"
+    activeAcct.style.padding = "0";
+    activeHome.style.color = "#fff"
+    activeHome.style.backgroundColor = "transparent"
+    activeHome.style.padding = "0";
+    activeSavings.style.color = "#083E9E"
+    activeSavings.style.backgroundColor = "#fff"
+    activeSavings.style.padding = "4px 40px 4px 24px"
+    activeSavings.style.borderRadius = "8px 8px 8px 0"
+    savingsDown.style.color = "#083E9E"
+    homeDown.style.color = "#A0AEC0"
+    acctDown.style.color = "#A0AEC0"
+    homeP.style.color = "#A0AEC0"
+    savingsP.style.color ="#2D3748"
+    acctP.style.color ="#A0AEC0"
+
+
+
+
+    // localStorage.setItem("currentPage", JSON.stringify(savingsPage))
+    // localStorage.setItem("currentPage3", "savingsPage")
+}
+goToSavingsPage()
 // Check if the page to display is stored in local storage
 // let currentPage1 = localStorage.getItem("currentPage1")
 // let currentPage2 = localStorage.getItem("currentPage2")
@@ -164,6 +226,8 @@ goToAcctPage()
 // generate account number and to stay on refresh
 function generateorLoadAcctNo(){
     let accountNumber = document.getElementById("acct-number")
+    let cardAcctNo = document.getElementById("card-acct-no")
+
     let savedAcctNo = JSON.parse(localStorage.getItem("userAcctNo")) //check if the acctno is saved already
     
     if (savedAcctNo === null) {   // If the account number is not already saved, generate and save it
@@ -172,6 +236,7 @@ function generateorLoadAcctNo(){
         savedAcctNo = generatedNo // Update the saved value 
     } else {
         accountNumber.innerText = savedAcctNo // If the account number is already saved, use the saved value
+        cardAcctNo.innerText = savedAcctNo 
     }
 }
 generateorLoadAcctNo()
@@ -208,6 +273,11 @@ function saveNewDetails(){
     users[currentUserIndex].userPassword = passwordModal.value
     users[currentUserIndex].userNumber = numberModal.value
     localStorage.setItem("myUsers",JSON.stringify(users))
+
+    document.getElementById("userfullName").innerHTML = users[currentUserIndex].userNames
+    document.getElementById("useracctName").innerHTML = users[currentUserIndex].userNames
+    document.getElementById("name-p").innerHTML = users[currentUserIndex].userNames    
+    document.getElementById("card-acct-name").innerHTML = users[currentUserIndex].userNames
     alert("Profile Updated successfully!")
     closeTheModalDiv()
 }

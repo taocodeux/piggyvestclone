@@ -759,6 +759,56 @@ header{
 .big-card-type6, .savings-icon6, .big-card-money6{
     color: #753ff6;
 }
+#piggy-icon{
+    width: 22px;
+    height: 22px;
+}
+.bank-icon{
+    font-size: 24px;
+}
+.back-arrow-modal{
+    background: none;
+}
+.arrow-icon{
+    font-size: 22px;
+}
+.recipient-acct-p{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+#recipient-acct-no{
+    width: 100%;
+    height: auto;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    border-radius: 8px 8px 8px 0px;
+    border: 1px solid #000;
+    outline: none;
+}
+#banks{
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+    overflow-y: auto;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    border-radius: 8px 8px 8px 0px;
+    border: 1px solid #000;
+    outline: none;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#banks::-ms-expand{
+    display: none;
+}
+#foundUserNames{
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+}
 
 
 

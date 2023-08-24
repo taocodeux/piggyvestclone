@@ -23,13 +23,13 @@ function changeDp(event){
         let userProfile = document.getElementById("userProfile") //get img html by id
         let acctDp = document.getElementById("acct-dp")
         let changeacctdp = document.getElementById("changed-acct-dp")
-        let editPictureModal = document.getElementById("edit-picture-modal")
+        // let editPictureModal = document.getElementById("edit-picture-modal")
         let savingsDp = document.getElementById("savingsdp")
 
         userProfile.src = fileContentUrl
         acctDp.src = fileContentUrl  
         changeacctdp.src = fileContentUrl     
-        editPictureModal.src = fileContentUrl  
+        // editPictureModal.src = fileContentUrl  
         savingsDp.src = fileContentUrl
         
         localStorage.setItem("userProfileImage",JSON.stringify(fileContentUrl))
@@ -37,12 +37,12 @@ function changeDp(event){
     reader.readAsDataURL(file) //the reader should read the selected image as a data url
 }
 
-//to make the picture stay on load
+    //to make the picture stay on load
 function dpStayOnLoad(){
     let userProfile = document.getElementById("userProfile") //get img html by id
     let acctDp = document.getElementById("acct-dp")
     let changeacctdp = document.getElementById("changed-acct-dp")
-    let editPictureModal = document.getElementById("edit-picture-modal")
+    // let editPictureModal = document.getElementById("edit-picture-modal")
     let savingsDp = document.getElementById("savingsdp")
     let storedImage = JSON.parse(localStorage.getItem("userProfileImage"))
 
@@ -50,11 +50,16 @@ function dpStayOnLoad(){
         userProfile.src = storedImage
         acctDp.src = storedImage
         changeacctdp.src = storedImage  
-        editPictureModal.src = storedImage  
+        // editPictureModal.src = storedImage  
         savingsDp.src = storedImage
+    }else{
+        console.log("no picture seen")
     }
 }
 dpStayOnLoad()
+
+
+
 
 
 //logout
@@ -64,53 +69,6 @@ function logOut(){
     window.location.href = "sign in.html"
 }
 
-
-
-//display block the home div
-function goToHomePage(){
-    let homePage = document.getElementById("homePage")
-    let accountPage = document.getElementById("account-page")
-    let savingsPage = document.getElementById("savings-page")
-    let activeAcct = document.getElementsByClassName("active-acct")[0]
-    let activeHome = document.getElementsByClassName("active")[0]
-    let activeSavings = document.getElementsByClassName("active-savings")[0]
-    let homeDown = document.getElementById("home-down")
-    let savingsDown = document.getElementById("savings-down")
-    let acctDown = document.getElementById("acct-down")
-    let homeP = document.getElementById("home-p")
-    let savingsP = document.getElementById("savings-p")
-    let acctP = document.getElementById("acct-p")
-
-
-
-
-    homePage.style.display = "block"
-    savingsPage.style.display = "none"
-    accountPage.style.display = "none"
-    activeAcct.style.color = "#fff"
-    activeAcct.style.backgroundColor = "transparent"
-    activeHome.style.color = "#083E9E"
-    activeHome.style.backgroundColor = "#fff"
-    activeHome.style.padding = "4px 40px 4px 24px"
-    activeAcct.style.padding = "0";
-    activeHome.style.borderRadius = "8px 8px 8px 0"
-    activeSavings.style.color = "#fff"
-    activeSavings.style.backgroundColor = "transparent"
-    activeSavings.style.padding = "0";
-    homeDown.style.color = "#083E9E"
-    savingsDown.style.color = "#A0AEC0"
-    acctDown.style.color = "#A0AEC0"
-    homeP.style.color = "#2D3748"
-    savingsP.style.color ="#A0AEC0"
-    acctP.style.color ="#A0AEC0"
-
-
-
-
-    // localStorage.setItem("currentPage", JSON.stringify(homePage))
-    // localStorage.setItem("currentPage2", "homePage")
-}
-goToHomePage()
 
 //display block the acct div
 function goToAcctPage(){
@@ -160,6 +118,52 @@ function goToAcctPage(){
 }
 goToAcctPage()
 
+
+//display block the home div
+function goToHomePage(){
+    let homePage = document.getElementById("homePage")
+    let accountPage = document.getElementById("account-page")
+    let savingsPage = document.getElementById("savings-page")
+    let activeAcct = document.getElementsByClassName("active-acct")[0]
+    let activeHome = document.getElementsByClassName("active")[0]
+    let activeSavings = document.getElementsByClassName("active-savings")[0]
+    let homeDown = document.getElementById("home-down")
+    let savingsDown = document.getElementById("savings-down")
+    let acctDown = document.getElementById("acct-down")
+    let homeP = document.getElementById("home-p")
+    let savingsP = document.getElementById("savings-p")
+    let acctP = document.getElementById("acct-p")
+
+
+
+
+    homePage.style.display = "block"
+    savingsPage.style.display = "none"
+    accountPage.style.display = "none"
+    activeAcct.style.color = "#fff"
+    activeAcct.style.backgroundColor = "transparent"
+    activeHome.style.color = "#083E9E"
+    activeHome.style.backgroundColor = "#fff"
+    activeHome.style.padding = "4px 40px 4px 24px"
+    activeAcct.style.padding = "0";
+    activeHome.style.borderRadius = "8px 8px 8px 0"
+    activeSavings.style.color = "#fff"
+    activeSavings.style.backgroundColor = "transparent"
+    activeSavings.style.padding = "0";
+    homeDown.style.color = "#083E9E"
+    savingsDown.style.color = "#A0AEC0"
+    acctDown.style.color = "#A0AEC0"
+    homeP.style.color = "#2D3748"
+    savingsP.style.color ="#A0AEC0"
+    acctP.style.color ="#A0AEC0"
+
+
+
+
+    // localStorage.setItem("currentPage", JSON.stringify(homePage))
+    // localStorage.setItem("currentPage2", "homePage")
+}
+goToHomePage()
 
 //display block the savings page
 function goToSavingsPage(){ 
@@ -298,3 +302,80 @@ function closeTheModalDiv(){
     modalDiv.style.display = "none"
 }
 closeTheModalDiv()
+
+//validate account numbers that u can send money to
+    let accountNumbers = {
+        taoAcct : {
+            name : "Bamidele Taofikat",
+            bank: "Access Bank",
+            accountNumber: "0103430044"
+        },
+        olabisiAcct : {
+            name : "Yakub Olabisi",
+            bank: "First Bank",
+            accountNumber: "0823692640"
+        },
+        nanaAcct: {
+            name : "Badmus Nana",
+            bank: "Polaris Bank",
+            accountNumber: "0102990453"
+        }
+    }
+    localStorage.setItem("accountNumbers", JSON.stringify(accountNumbers))
+
+    let foundacct = false
+    function validateAccounts(){
+        let recipientAcctNo = document.getElementById("recipient-acct-no").value
+        let userBank = document.getElementById("banks").value
+        let foundUserNames = document.getElementById("foundUserNames")
+        let savedAccountNumbers = JSON.parse(localStorage.getItem("accountNumbers"))
+        
+        for(let key in savedAccountNumbers){       //check if any of the user input matches the saved acct
+            if(recipientAcctNo == savedAccountNumbers[key].accountNumber
+            && userBank == savedAccountNumbers[key].bank){
+                foundUserNames.innerText = savedAccountNumbers[key].name
+                foundacct = true //set the flag to true if condition is met
+                return //to exit the loop once condition is met
+            }
+        }
+
+        if (!foundacct){
+            alert("incorrect Account Details!")
+        }
+    }
+
+  let openModal1Button = document.getElementById('openModal1');
+  let openModal2Button = document.getElementById('openModal2');
+  let openModal3Button = document.getElementById('openModal3');
+  let openModal4Button = document.getElementById('openModal4');
+  let backToModal1Button = document.getElementById('backToModal1');
+
+  openModal1Button.addEventListener('click', () => {
+    $('#exampleModalToggle1').modal('show');
+  });
+
+  openModal2Button.addEventListener('click', () => {
+    $('#exampleModalToggle1').modal('hide');
+    $('#exampleModalToggle2').modal('show');
+  });
+
+  openModal3Button.addEventListener('click', () => {
+    $('#exampleModalToggle2').modal('hide');
+    $('#exampleModalToggle3').modal('show');
+  });
+
+  openModal4Button.addEventListener('click', () => {
+    $('#exampleModalToggle3').modal('hide');
+    $('#exampleModalToggle4').modal('show');
+  });
+
+  backToModal1Button.addEventListener('click', () => {
+    $('#exampleModalToggle2').modal('hide');
+    $('#exampleModalToggle1').modal('show');
+  });
+
+
+
+
+
+

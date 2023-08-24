@@ -1,55 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <title>Bank Account Details</title>
 </head>
 <body>
-  <!-- Dashboard -->
-<div>
-  <h1>Welcome to Your Dashboard</h1>
-  <p>Username: <span id="username"></span></p>
-  <p>Email: <span id="email"></span></p>
-  <button id="editButton">Edit Details</button>
-  <div id="editForm" style="display: none;">
-      <label for="newUsername">New Username: </label>
-      <input type="text" id="newUsername"><br>
-      <label for="newEmail">New Email: </label>
-      <input type="email" id="newEmail"><br>
-      <button id="saveButton">Save Changes</button>
+    <h1>Bank Account Details</h1>
+
+    <!-- Form to validate acct to send money to -->
+    <form id="accountForm">
+      <label for="accountNumber">Account Number:</label>
+      <input type="text" id="userAccountNumber" required><br><br>
+      
+      <label for="bank">Bank:</label>
+      <input type="text" id="userBank" required><br><br>
+        
+      <label for="name">Name:</label>
+      <input type="text" id="userName" required><br><br>
+
+      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle1" onclick="validateAccounts()">Confirm User</button>
+    </form>
+<!-- Modal 1 -->
+<div class="modal fade" id="exampleModalToggle1" tabindex="-1" aria-labelledby="exampleModalToggleLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel1">Modal 1</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Show the second modal and hide this one with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+      </div>
+    </div>
   </div>
 </div>
-<script>
 
-let newUsernameInput = document.getElementById("newUsername");
-let newEmailInput = document.getElementById("newEmail");
-let saveButton = document.getElementById("saveButton");
+<!-- Modal 2 -->
+<div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Show the third modal and hide this one with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">Open third modal</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-// Retrieve user information from local storage
-let users = JSON.parse(localStorage.getItem("myUsers")) || [];
+<!-- Modal 3 -->
+<div class="modal fade" id="exampleModalToggle3" tabindex="-1" aria-labelledby="exampleModalToggleLabel3" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">Modal 3</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Show the fourth modal and hide this one with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" data-bs-toggle="modal">Open fourth modal</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-// Function to save changes to user information
-function saveChanges() {
-    users[currentUserIndex].userNames = newUsernameInput.value;
-    users[currentUserIndex].userEmail = newEmailInput.value;
-    localStorage.setItem("myUsers", JSON.stringify(users));
-    editForm.style.display = "none";
-    displayUserInfo();
-}
+<!-- Modal 4 -->
+<div class="modal fade" id="exampleModalToggle4" tabindex="-1" aria-labelledby="exampleModalToggleLabel4" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel4">Modal 4</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Show the first modal and hide this one with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal">Back to first modal</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-// Function to display user information on the dashboard
-function displayUserInfo() {
-    // Display user information
-}
+<!-- Button to Open First Modal -->
+<button class="btn btn-primary" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal">Open first modal</button>
 
-// Manually trigger saving of changes
-saveButton.onclick = saveChanges;
+    <script>
+      let accountNumbers = {
+        taoAcct : {
+          name : "Bamidele Taofikat",
+          bank: "Access Bank",
+          accountNumber: "0103430044"
+        },
+        olabisiAcct : {
+          name : "Yakub Olabisi",
+          bank: "First Bank",
+          accountNumber: "0823692640"
+        },
+        nanaAcct: {
+          name : "Badmus Nana",
+          bank: "Polaris Bank",
+          accountNumber: "0102990453"
+        }
+      }
+      localStorage.setItem("accountNumbers", JSON.stringify(accountNumbers));
+      function validateAccounts(){
+        let userAccountNumber = document.getElementById("userAccountNumber").value
+        let userBank = document.getElementById("userBank").value
+        let userName = document.getElementById("userName")
 
-// Manually trigger initial display of user information
-displayUserInfo();
+        // Load the saved account data from local storage
+        let savedAccountNumbers = JSON.parse(localStorage.getItem("accountNumbers"))
 
+        // Check if the user input matches any of the stored accounts
+        for (let key in savedAccountNumbers) {
+          if (
+            userAccountNumber == savedAccountNumbers[key].accountNumber &&
+            userBank == savedAccountNumbers[key].bank
+          ) {
+            userName.style.display = "block"
+            userName.value = savedAccountNumbers[key].name;
+            return; // Exit the loop once a match is found
+          }
+        }
 
-</script>
+        // If no match is found, show an alert
+        alert("Account not found");
+      }
+
+    </script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -45,6 +45,7 @@
                 <span>Logout</span>
             </div>
         </aside>
+
         <!-- home page -->
         <aside class="homePage overflow-y-scroll" id="homePage">
             <header class="header-home d-flex justify-content-between align-items-center mb-2">
@@ -213,6 +214,206 @@
             </section>
         </aside>
         
+        <!-- savings page -->
+        <aside class="savings-page overflow-y-scroll" id="savings-page">
+            <header class="savings-header d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <h1 id="savings-header-h1">Savings</h1>
+                    <p class="joke">Let's see how well you're doing.</p>
+                </div>
+                <div>
+                    <img src="defaultimg.jpg" alt="" id="savingsdp">
+                </div>
+            </header>
+            <div class="bills-card-div d-flex flex-wrap flex-row justify-content-between align-items-center w-100">
+                <div class="bills-card1">
+                    <p class="card-total-bal">Total Balance</p>
+                    <p class="card-money" >₦1,014,757.02</p>
+                    <div class="accts-name-no-div d-flex justify-content-between align-items-center">
+                        <span>
+                            <p class="acct-name-tx">Account Name</p>
+                            <p id="card-acct-name"></p>
+                        </span>
+                        <span>
+                            <p class="savings-acct-no-tx">Account Number</p>
+                            <p id="card-acct-no"></p>
+                        </span>
+                    </div>
+                </div>
+                <div class="bills-card2 d-flex flex-wrap gap-3 align-items-center">
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-ui-add m-auto"></i>
+                            <figcaption>Add Money</figcaption>
+                        </div>
+                        <div class="mnge-bills-box d-flex align-items-center" id="openModal1">
+                            <i class="icofont-exchange m-auto"></i>
+                            <figcaption>Transfer</figcaption>
+                        </div>
+                        <!-- Modal1 -->
+                        <div class="modal fade" id="exampleModalToggle1" tabindex="-1" aria-labelledby="exampleModalToggleLabel1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel1">Transfer</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <button class="d-flex flex-col w-100 btn btn-outline-dark mb-3 align-items-center gap-4">
+                                            <img src="dashboard images/piggy icon.webp" alt="" id="piggy-icon">
+                                            <span>To PiggyVest Account</span>
+                                        </button>
+                                        <button class="d-flex flex-col w-100 btn btn-outline-dark align-items-center gap-4" id="openModal2">
+                                            <i class="icofont-bank-alt bank-icon"></i>
+                                            <span>To Other Bank Accounts</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal2 -->
+                        <div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="border-0 back-arrow-modal" id="backToModal1">
+                                            <i class="icofont-arrow-left arrow-icon"></i>
+                                        </button>
+                                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Transfer To Other Bank Accounts</h1>
+                                    </div>
+                                    <div class="modal-body d-grid">
+                                        <label for="recipient-acct-no" class="recipient-acct-p">Recipient Account</label>
+                                        <input type="number" id="recipient-acct-no" placeholder="Enter 10 digits Account Number">
+                                        <select name="Banks" id="banks">
+                                            <option value="">Select Recipient Bank</option>
+                                            <option value="Access Bank">Access Bank</option>
+                                            <option value="First Bank">First Bank</option>
+                                            <option value="First Monument City Bank(FCMB)">First Monument City Bank(FCMB)</option>
+                                            <option value="Guaranty Trust Bank(GTB)">Guaranty Trust Bank(GTB)</option>
+                                            <option value="KeyStone Bank">KeyStone Bank</option>
+                                            <option value="Polaris Bank">Polaris Bank</option>
+                                            <option value="Sterling Bank">Sterling Bank</option>
+                                            <option value="Union Bank">Union Bank</option>
+                                            <option value="United Bank of Africa(UBA)">United Bank of Africa(UBA)</option>
+                                            <option value="Unity Bank">Unity Bank</option>
+                                            <option value="Zenith Bank">Zenith Bank</option>
+                                        </select>
+                                        <p id="foundUserNames">
+
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer m-auto w-100">
+                                        <button type="button" class="btn btn-primary w-100" id="openModal3" onclick="validateAccounts()">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal 3 -->
+                        <div class="modal fade" id="exampleModalToggle3" tabindex="-1" aria-labelledby="exampleModalToggleLabel3" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">Modal 3</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Show the fourth modal and hide this one with the button below.
+                                </div>
+                                <div class="modal-footer">
+                                <button class="btn btn-primary" id="openModal4">Open fourth modal</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Modal 4 -->
+                        <div class="modal fade" id="exampleModalToggle4" tabindex="-1" aria-labelledby="exampleModalToggleLabel4" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalToggleLabel4">Modal 4</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Show the first modal and hide this one with the button below.
+                                </div>
+                                <div class="modal-footer">
+                                <button class="btn btn-primary btn-close">Back to first modal</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-pay m-auto"></i>
+                            <figcaption>Pay Bills</figcaption>
+                        </div>
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-history m-auto"></i>
+                            <figcaption>Transaction History</figcaption>
+                        </div>
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-file-text m-auto"></i>
+                            <figcaption>Generate Statement</figcaption>
+                        </div>
+                        <div class="mnge-bills-box d-flex align-items-center">
+                            <i class="icofont-arrow-right m-auto"></i>
+                            <figcaption>More</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="big-card-div d-flex flex-wrap w-100 mt-5 mb-5">
+                <div class="big-card-container w-1000 d-flex flex-wrap gap-3">
+                    <div class="big-card">
+                        <i class="icofont-shield savings-icon1"></i>
+                        <p class="big-card-type1">Piggybank</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money1">₦900,152.92</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-film savings-icon2"></i>
+                        <p class="big-card-type2">Flex Naira</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money2">₦490,142.92</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-lock savings-icon3"></i>
+                        <p class="big-card-type3">Safelock</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money3">₦0.00</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-dart savings-icon4"></i>
+                        <p class="big-card-type4">Target</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money4">₦0.00</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-dollar savings-icon5"></i>
+                        <p class="big-card-type5">Flex Dollar</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money5">$0.00</p>
+                    </div>
+                    <div class="big-card">
+                        <i class="icofont-ui-email savings-icon6"></i>
+                        <p class="big-card-type6">PocketApp</p>
+                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
+                        <p class="big-card-money6">My pocket</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
         <!-- account-page -->
         <aside class="account-page overflow-y-scroll position-relative" id="account-page">
             <div class="header-div">
@@ -234,12 +435,12 @@
                             <div class="form-acct-div">
                                 <p class="title-modal">Basic Data</p>
                                 <form action="" class="d-grid">
-                                    <label for="avatar-img" class="edit-label mt-4">Change your avatar</label>
+                                    <label for="edit-picture-modal" class="edit-label mt-4">Change your avatar</label>
                                     <div class="d-flex align-items-center gap-3 img-span">
                                         <img src="defaultimg.jpg" alt="" id="changed-acct-dp" class="changed-acct-dp">
                                         <label for="edit-picture-modal">
-                                        <span class="t-to-change">Tap to Change</span>
-                                        <input type="file" id="edit-picture-modal" class="d-none" onchange="changeDp(event)">
+                                            <span class="t-to-change">Tap to Change</span>
+                                            <input type="file" id="edit-picture-modal" class="d-none" accept="image/*" onchange="changeDp(event)">
                                         </label>
                                     </div>
                                     <label for="full-name-modal" class="edit-label">Full Name</label>
@@ -332,102 +533,7 @@
             </div>
         </aside>
 
-        <!-- savings page -->
-        <aside class="savings-page overflow-y-scroll" id="savings-page">
-            <header class="savings-header d-flex justify-content-between align-items-center mb-2">
-                <div>
-                    <h1 id="savings-header-h1">Savings</h1>
-                    <p class="joke">Let's see how well you're doing.</p>
-                </div>
-                <div>
-                    <img src="defaultimg.jpg" alt="" id="savingsdp">
-                </div>
-            </header>
-            <div class="bills-card-div d-flex flex-wrap flex-row justify-content-between align-items-center w-100">
-                <div class="bills-card1">
-                    <p class="card-total-bal">Total Balance</p>
-                    <p class="card-money" >₦1,014,757.02</p>
-                    <div class="accts-name-no-div d-flex justify-content-between align-items-center">
-                        <span>
-                            <p class="acct-name-tx">Account Name</p>
-                            <p id="card-acct-name"></p>
-                        </span>
-                        <span>
-                            <p class="savings-acct-no-tx">Account Number</p>
-                            <p id="card-acct-no"></p>
-                        </span>
-                    </div>
-                </div>
-                <div class="bills-card2 d-flex flex-wrap gap-3 align-items-center">
-                    <div class="d-flex flex-wrap gap-3">
-                        <div class="mnge-bills-box d-flex align-items-center">
-                            <i class="icofont-ui-add m-auto"></i>
-                            <figcaption>Add Money</figcaption>
-                        </div>
-                        <div class="mnge-bills-box d-flex align-items-center">
-                            <i class="icofont-exchange m-auto"></i>
-                            <figcaption>Transfer</figcaption>
-                        </div>
-                        <div class="mnge-bills-box d-flex align-items-center">
-                            <i class="icofont-pay m-auto"></i>
-                            <figcaption>Pay Bills</figcaption>
-                        </div>
-                        <div class="mnge-bills-box d-flex align-items-center">
-                            <i class="icofont-history m-auto"></i>
-                            <figcaption>Transaction History</figcaption>
-                        </div>
-                        <div class="mnge-bills-box d-flex align-items-center">
-                            <i class="icofont-file-text m-auto"></i>
-                            <figcaption>Generate Statement</figcaption>
-                        </div>
-                        <div class="mnge-bills-box d-flex align-items-center">
-                            <i class="icofont-arrow-right m-auto"></i>
-                            <figcaption>More</figcaption>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="big-card-div d-flex flex-wrap w-100 mt-5 mb-5">
-                <div class="big-card-container w-1000 d-flex flex-wrap gap-3">
-                    <div class="big-card">
-                        <i class="icofont-shield savings-icon1"></i>
-                        <p class="big-card-type1">Piggybank</p>
-                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
-                        <p class="big-card-money1">₦900,152.92</p>
-                    </div>
-                    <div class="big-card">
-                        <i class="icofont-film savings-icon2"></i>
-                        <p class="big-card-type2">Flex Naira</p>
-                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
-                        <p class="big-card-money2">₦490,142.92</p>
-                    </div>
-                    <div class="big-card">
-                        <i class="icofont-lock savings-icon3"></i>
-                        <p class="big-card-type3">Safelock</p>
-                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
-                        <p class="big-card-money3">₦0.00</p>
-                    </div>
-                    <div class="big-card">
-                        <i class="icofont-dart savings-icon4"></i>
-                        <p class="big-card-type4">Target</p>
-                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
-                        <p class="big-card-money4">₦0.00</p>
-                    </div>
-                    <div class="big-card">
-                        <i class="icofont-dollar savings-icon5"></i>
-                        <p class="big-card-type5">Flex Dollar</p>
-                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
-                        <p class="big-card-money5">$0.00</p>
-                    </div>
-                    <div class="big-card">
-                        <i class="icofont-ui-email savings-icon6"></i>
-                        <p class="big-card-type6">PocketApp</p>
-                        <p class="grey-p">Strict savings automatically. Daily, Weekly or Monthly. 10% p.a</p>
-                        <p class="big-card-money6">My pocket</p>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        <!-- mobile nav -->
         <div class="navdown">
             <ul class="down">
                 <li class="navdown-li" onclick="goToHomePage()">
@@ -450,5 +556,8 @@
         </div>
     </main>
     <script src="dashboard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+    
 </body>
 </html>

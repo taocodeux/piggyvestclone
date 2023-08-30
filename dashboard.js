@@ -266,6 +266,7 @@ let fullNameModal = document.getElementById("full-name-modal")
 let emailModal = document.getElementById("email-modal")
 let passwordModal = document.getElementById("password-modal")
 let numberModal = document.getElementById("number-modal")
+let pinModal = document.getElementById("pin-modal")
 let saveBtn = document.getElementById("foot-btn")
 
 
@@ -276,7 +277,9 @@ function saveNewDetails(){
     users[currentUserIndex].userEmail = emailModal.value
     users[currentUserIndex].userPassword = passwordModal.value
     users[currentUserIndex].userNumber = numberModal.value
+
     localStorage.setItem("myUsers",JSON.stringify(users))
+    localStorage.setItem("savedPin",JSON.stringify(pinModal.value) )
 
     document.getElementById("userfullName").innerHTML = users[currentUserIndex].userNames
     document.getElementById("useracctName").innerHTML = users[currentUserIndex].userNames
@@ -445,14 +448,19 @@ function backToModal3(){
     foundUserNames.innerText = ""
 }
 function openModal5(){
-    $('#exampleModalToggle5').modal('show')
-    $('#exampleModalToggle4').modal('hide')
-
-    // After 5 seconds, close modal 5 and open modal 6
-    setTimeout(function () {
-        $('#exampleModalToggle5').modal('hide')
-        openModal6()
-    }, 5000) // 5000 milliseconds = 5 seconds
+    let savedPin = JSON.parse(localStorage.getItem("savedPin"))
+    let pinInput = document.getElementById("pinInput")
+    
+    if(pinInput.value === savedPin){
+        $('#exampleModalToggle5').modal('show')
+        $('#exampleModalToggle4').modal('hide')
+        setTimeout(function () {
+            $('#exampleModalToggle5').modal('hide')
+            openModal6()
+        }, 5000)
+    }else{
+        alert("Incorrect Transaction pin")
+    }
 }
 function openModal6(){
     $('#exampleModalToggle6').modal('show')
@@ -462,6 +470,9 @@ function backToModal4(){
     $('#exampleModalToggle5').modal('hide')
 }
 
+function closeLastModal(){
+    $('#exampleModalToggle6').modal('hide')
+}
 
 
 

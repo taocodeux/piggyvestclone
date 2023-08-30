@@ -254,9 +254,12 @@
                         <div class="modal fade" id="exampleModalToggle1" tabindex="-1" aria-labelledby="exampleModalToggleLabel1" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
-                                    <div class="modal-header">
+                                    <div class="modal-header d-flex justify-content-between align-items-center">
+                                        <button class="border-0 back-arrow-modal" onclick="backToModal1()">
+                                            <i class="icofont-arrow-left arrow-icon"></i>
+                                        </button>
                                         <h1 class="modal-title fs-5" id="exampleModalToggleLabel1">Transfer</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <span></span>
                                     </div>
                                     <div class="modal-body">
                                         <button class="d-flex flex-col w-100 btn btn-outline-dark mb-3 align-items-center gap-4">
@@ -275,11 +278,12 @@
                         <div class="modal fade" id="exampleModalToggle2" tabindex="-1" aria-labelledby="exampleModalToggleLabel2" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
-                                    <div class="modal-header">
+                                    <div class="modal-header d-flex justify-content-between align-items-center">
                                         <button class="border-0 back-arrow-modal" onclick="backToModal1()">
                                             <i class="icofont-arrow-left arrow-icon"></i>
                                         </button>
                                         <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Transfer To Other Bank Accounts</h1>
+                                        <span></span>
                                     </div>
                                     <div class="modal-body d-grid">
                                         <label for="recipient-acct-no" class="recipient-acct-p">Recipient Account</label>
@@ -312,11 +316,12 @@
                         <div class="modal fade" id="exampleModalToggle3" tabindex="-1" aria-labelledby="exampleModalToggleLabel3" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
-                                    <div class="modal-header">
+                                    <div class="modal-header d-flex justify-content-between align-items-center">
                                         <button class="border-0 back-arrow-modal" onclick="backToModal2()">
                                             <i class="icofont-arrow-left arrow-icon"></i>
                                         </button>
                                         <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">Confirm Amount</h1>
+                                        <span></span>
                                     </div>
                                     <div class="modal-body">
                                         <div class="d-flex flex-column align-items-center justify-content-center mt-0">
@@ -343,11 +348,12 @@
                         <div class="modal fade" id="exampleModalToggle4" tabindex="-1" aria-labelledby="exampleModalToggleLabel4" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header d-flex justify-content-between align-items-center">
                                     <button class="border-0 back-arrow-modal" onclick="backToModal3()">
                                         <i class="icofont-arrow-left arrow-icon"></i>
                                     </button>
                                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel4">Confirm Recipient Details</h1>
+                                    <span></span>
                                 </div>
                                 <div class="modal-body">
                                     <p id="foundAmountToSend" class="text-center"></p>
@@ -392,11 +398,12 @@
                         <div class="modal fade" id="exampleModalToggle5" tabindex="-1" aria-labelledby="exampleModalToggleLabel5" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
-                                    <div class="modal-header">
+                                    <div class="modal-header d-flex justify-content-between align-items-center">
                                         <button class="border-0 back-arrow-modal" onclick="backToModal4()">
                                             <i class="icofont-arrow-left arrow-icon"></i>
                                         </button>
                                         <h1 class="modal-title fs-5" id="exampleModalToggleLabel5">Performing Transfer</h1>
+                                        <span></span>
                                     </div>
                                     <div class="modal-body text-center">
                                         <div class="d-flex justify-content-center align-items-center">
@@ -416,7 +423,7 @@
                                         <p class="successful">Transaction successful</p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="ok">Download Receipt</span>
-                                            <span class="ok">Ok</span>
+                                            <span class="ok" onclick="closeLastModal()">Ok</span>
                                         </div>
                                     </div>
                                 </div>
@@ -530,6 +537,8 @@
                                     <input type="" id="password-modal" class="changed-input">
                                     <label for="number-modal" class="edit-label">Phone Number</label>
                                     <input type="number" id="number-modal" class="changed-input">
+                                    <label for="pin-modal" class="edit-label">Transaction Pin</label>
+                                    <input type="number" id="pin-modal" class="changed-input" oninput="limitPinTo4(this)">
                                 </form>
                             </div>
                             <div class="footer-modal d-grid">

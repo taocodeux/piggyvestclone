@@ -844,6 +844,7 @@ header{
 }
 .ok{
     font-size: 18px;
+    cursor: pointer;
 }
 .custom-loader {
     width:50px;

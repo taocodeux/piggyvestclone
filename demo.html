@@ -95,47 +95,95 @@
 <button class="btn btn-primary" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal">Open first modal</button>
 
     <script>
-      let accountNumbers = {
-        taoAcct : {
-          name : "Bamidele Taofikat",
-          bank: "Access Bank",
-          accountNumber: "0103430044"
-        },
-        olabisiAcct : {
-          name : "Yakub Olabisi",
-          bank: "First Bank",
-          accountNumber: "0823692640"
-        },
-        nanaAcct: {
-          name : "Badmus Nana",
-          bank: "Polaris Bank",
-          accountNumber: "0102990453"
-        }
+/ Define the saved account data
+let accountNumbers = {
+    taoAcct: {
+        name: "Bamidele Taofikat",
+        bank: "Access Bank",
+        accountNumber: "0103430044"
+    },
+    olabisiAcct: {
+        name: "Yakub Olabisi",
+        bank: "First Bank",
+        accountNumber: "0823692640"
+    },
+    nanaAcct: {
+        name: "Badmus Nana",
+        bank: "Polaris Bank",
+        accountNumber: "0102990453"
+    }
+};
+
+// Store the account data in local storage
+localStorage.setItem("accountNumbers", JSON.stringify(accountNumbers));
+
+let openModal1Button = document.getElementById('openModal1');
+let openModal2Button = document.getElementById('openModal2');
+let openModal3Button = document.getElementById('openModal3');
+let openModal4Button = document.getElementById('openModal4');
+let backToModal1Button = document.getElementById('backToModal1');
+
+let recipientAcctNoInput = document.getElementById("recipient-acct-no");
+let banksSelect = document.getElementById("banks");
+let foundUserNames = document.getElementById("foundUserNames");
+
+// Event listener for "Next" button in Modal 2
+openModal2Button.addEventListener('click', () => {
+  $('#exampleModalToggle1').modal('hide');
+  $('#exampleModalToggle2').modal('show');
+  foundUserNames.innerText = ""; // Clear any previous name
+});
+
+function updateFoundUserNames(){
+    let recipientAcctNo = recipientAcctNoInput.value;
+    let userBank = banksSelect.value;
+    let savedAccountNumbers = JSON.parse(localStorage.getItem("accountNumbers"));
+    
+    let accountFound = false; // Flag to check if the account is found
+    
+    for (let key in savedAccountNumbers) {
+      if (
+        recipientAcctNo == savedAccountNumbers[key].accountNumber &&
+        userBank == savedAccountNumbers[key].bank
+      ) {
+        foundUserNames.innerText = savedAccountNumbers[key].name;
+        accountFound = true;
+        break; // Exit the loop once condition is met
       }
-      localStorage.setItem("accountNumbers", JSON.stringify(accountNumbers));
-      function validateAccounts(){
-        let userAccountNumber = document.getElementById("userAccountNumber").value
-        let userBank = document.getElementById("userBank").value
-        let userName = document.getElementById("userName")
+    }
+}
+// Event listener for input changes in Modal 3
+recipientAcctNoInput.addEventListener('input', updateFoundUserNames);
+banksSelect.addEventListener('change', updateFoundUserNames);
 
-        // Load the saved account data from local storage
-        let savedAccountNumbers = JSON.parse(localStorage.getItem("accountNumbers"))
 
-        // Check if the user input matches any of the stored accounts
-        for (let key in savedAccountNumbers) {
-          if (
-            userAccountNumber == savedAccountNumbers[key].accountNumber &&
-            userBank == savedAccountNumbers[key].bank
-          ) {
-            userName.style.display = "block"
-            userName.value = savedAccountNumbers[key].name;
-            return; // Exit the loop once a match is found
-          }
-        }
+// Event listener for "Next" button in Modal 3
+openModal3Button.addEventListener('click', () => { 
+    $('#exampleModalToggle2').modal('hide');
+    $('#exampleModalToggle3').modal('show');
+  });
+  
+  
 
-        // If no match is found, show an alert
-        alert("Account not found");
-      }
+// Event listener for "Next" button in Modal 4
+openModal4Button.addEventListener('click', () => {
+  $('#exampleModalToggle3').modal('hide');
+  $('#exampleModalToggle4').modal('show');
+  foundUserNames.innerText = ""; // Clear any previous name
+});
+
+// Event listener for "Back to Modal 1" button
+backToModal1Button.addEventListener('click', () => {
+  $('#exampleModalToggle2').modal('hide');
+  $('#exampleModalToggle1').modal('show');
+  foundUserNames.innerText = ""; // Clear any previous name
+});
+
+// Event listener for "Next" button in Modal 1
+openModal1Button.addEventListener('click', () => {
+  $('#exampleModalToggle1').modal('show');
+  foundUserNames.innerText = ""; // Clear any previous name
+});
 
     </script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

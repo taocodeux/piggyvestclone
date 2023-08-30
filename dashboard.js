@@ -303,79 +303,173 @@ function closeTheModalDiv(){
 }
 closeTheModalDiv()
 
-//validate account numbers that u can send money to
-    let accountNumbers = {
-        taoAcct : {
-            name : "Bamidele Taofikat",
-            bank: "Access Bank",
-            accountNumber: "0103430044"
-        },
-        olabisiAcct : {
-            name : "Yakub Olabisi",
-            bank: "First Bank",
-            accountNumber: "0823692640"
-        },
-        nanaAcct: {
-            name : "Badmus Nana",
-            bank: "Polaris Bank",
-            accountNumber: "0102990453"
-        }
-    }
-    localStorage.setItem("accountNumbers", JSON.stringify(accountNumbers))
 
-    let foundacct = false
-    function validateAccounts(){
-        let recipientAcctNo = document.getElementById("recipient-acct-no").value
-        let userBank = document.getElementById("banks").value
-        let foundUserNames = document.getElementById("foundUserNames")
-        let savedAccountNumbers = JSON.parse(localStorage.getItem("accountNumbers"))
-        
-        for(let key in savedAccountNumbers){       //check if any of the user input matches the saved acct
-            if(recipientAcctNo == savedAccountNumbers[key].accountNumber
-            && userBank == savedAccountNumbers[key].bank){
-                foundUserNames.innerText = savedAccountNumbers[key].name
-                foundacct = true //set the flag to true if condition is met
-                return //to exit the loop once condition is met
+//open the modals and validate account numbers
+let accountNumbers = {
+    taoAcct: {
+        name: "Bamidele Taofikat",
+        bank: "Access Bank",
+        accountNumber: "0103430044"
+    },
+    olabisiAcct: {
+        name: "Yakub Olabisi",
+        bank: "First Bank",
+        accountNumber: "0823692640"
+    },
+    nanaAcct: {
+        name: "Badmus Nana",
+        bank: "Polaris Bank",
+        accountNumber: "0102990453"
+    }
+}
+
+localStorage.setItem("accountNumbers", JSON.stringify(accountNumbers))
+
+let recipientAcctNoInput = document.getElementById("recipient-acct-no")
+let bankSelect = document.getElementById("banks")
+let foundUserNames = document.getElementById("foundUserNames")
+
+function openModal1(){
+    $('#exampleModalToggle1').modal('show')
+    foundUserNames.innerText = ""
+}
+function backToModal1(){
+    $('#exampleModalToggle2').modal('hide')
+    $('#exampleModalToggle1').modal('show')
+    foundUserNames.innerText = ""
+}
+function openModal2(){
+    $('#exampleModalToggle2').modal('show')
+    $('#exampleModalToggle1').modal('hide')
+    foundUserNames.innerText = ""
+}
+
+recipientAcctNoInput.addEventListener('input', updateFoundUserNames)
+bankSelect.addEventListener('change', updateFoundUserNames)
+
+function updateFoundUserNames(){
+    let recipientAcctNo = recipientAcctNoInput.value
+    let userBank = bankSelect.value
+    let savedAccountNumbers = JSON.parse(localStorage.getItem("accountNumbers"))
+     
+    if(recipientAcctNo && userBank){
+        let accountFound = false
+
+        for (let key in savedAccountNumbers) {
+            if (
+              recipientAcctNo == savedAccountNumbers[key].accountNumber &&
+              userBank == savedAccountNumbers[key].bank
+            ) {
+              foundUserNames.innerText = savedAccountNumbers[key].name
+              accountFound = true
+              localStorage.setItem("selectedRecipientAcctNo", JSON.stringify(recipientAcctNo))
+              localStorage.setItem("selectedUserBank", JSON.stringify(userBank))
+              localStorage.setItem("selectedFoundUserName", JSON.stringify(foundUserNames.innerText))
+              break
             }
         }
-
-        if (!foundacct){
-            alert("incorrect Account Details!")
+        if(!accountFound){
+            foundUserNames.innerText = "Incorrect account details!"
         }
+    }else{
+        foundUserNames.innerText = ""
     }
-
-  let openModal1Button = document.getElementById('openModal1');
-  let openModal2Button = document.getElementById('openModal2');
-  let openModal3Button = document.getElementById('openModal3');
-  let openModal4Button = document.getElementById('openModal4');
-  let backToModal1Button = document.getElementById('backToModal1');
-
-  openModal1Button.addEventListener('click', () => {
-    $('#exampleModalToggle1').modal('show');
-  });
-
-  openModal2Button.addEventListener('click', () => {
-    $('#exampleModalToggle1').modal('hide');
-    $('#exampleModalToggle2').modal('show');
-  });
-
-  openModal3Button.addEventListener('click', () => {
-    $('#exampleModalToggle2').modal('hide');
-    $('#exampleModalToggle3').modal('show');
-  });
-
-  openModal4Button.addEventListener('click', () => {
-    $('#exampleModalToggle3').modal('hide');
-    $('#exampleModalToggle4').modal('show');
-  });
-
-  backToModal1Button.addEventListener('click', () => {
-    $('#exampleModalToggle2').modal('hide');
-    $('#exampleModalToggle1').modal('show');
-  });
+}
 
 
+function openModal3(){
+    let selectedRecipientAcctNo = JSON.parse(localStorage.getItem("selectedRecipientAcctNo"))
+    let selectedUserBank = JSON.parse(localStorage.getItem("selectedUserBank"))
+    let selectedFoundUserName = JSON.parse(localStorage.getItem("selectedFoundUserName"))
+
+    if(selectedFoundUserName && selectedRecipientAcctNo && selectedUserBank){
+        let theFoundAcct = document.getElementById("theFoundAcct")
+        let theFoundBank = document.getElementById("theFoundBank")
+        let theFoundName = document.getElementById("theFoundName")
+
+        theFoundAcct.innerText = "(" + selectedRecipientAcctNo + ")"
+        theFoundBank.innerText = selectedUserBank
+        theFoundName.innerText = selectedFoundUserName
+    }
+    if(foundUserNames.innerText !== "Incorrect account details!" && foundUserNames.innerText){
+        $('#exampleModalToggle2').modal('hide')
+        $('#exampleModalToggle3').modal('show')
+    }else{
+        alert("Please check account details")
+    }
+}
+function backToModal2(){
+    $('#exampleModalToggle3').modal('hide')
+    $('#exampleModalToggle2').modal('show')
+}
+
+function openModal4(){
+    let amountToSend = document.getElementById("amountToSend")
+    let narration = document.getElementById("narration")
+    
+    localStorage.setItem("selectedAmountToSend", JSON.stringify(amountToSend.value))
+    localStorage.setItem("selectedNarration", JSON.stringify(narration.value))
+
+    let selectedAmountToSend = JSON.parse(localStorage.getItem("selectedAmountToSend"))
+    let selectedNarration = JSON.parse(localStorage.getItem("selectedNarration"))
+    let selectedRecipientAcctNo = JSON.parse(localStorage.getItem("selectedRecipientAcctNo"))
+    let selectedUserBank = JSON.parse(localStorage.getItem("selectedUserBank"))
+    let selectedFoundUserName = JSON.parse(localStorage.getItem("selectedFoundUserName"))
+
+    if(selectedAmountToSend && selectedRecipientAcctNo && selectedUserBank && selectedFoundUserName){
+        let boldAmount = document.getElementById("boldAmount")
+        let boldNarration = document.getElementById("boldNarration")
+        let foundAmountToSend = document.getElementById("foundAmountToSend")
+        let boldBank = document.getElementById("boldBank")
+        let boldAcct = document.getElementById("boldAcct")
+        let boldName = document.getElementById("boldName")
+
+        boldAmount.innerText = "₦" + selectedAmountToSend
+        boldNarration.innerText = selectedNarration
+        foundAmountToSend.innerText = "₦" + selectedAmountToSend
+        boldAcct.innerText = selectedRecipientAcctNo
+        boldBank.innerText = selectedUserBank
+        boldName.innerText = selectedFoundUserName
+    }
+    if(amountToSend.value){
+        $('#exampleModalToggle4').modal('show')
+        $('#exampleModalToggle3').modal('hide')
+    }else{
+        alert("please fill in the amount to send!")
+    }
+    
+}
+function backToModal3(){
+    $('#exampleModalToggle3').modal('show')
+    $('#exampleModalToggle4').modal('hide')
+    foundUserNames.innerText = ""
+}
+function openModal5(){
+    $('#exampleModalToggle5').modal('show')
+    $('#exampleModalToggle4').modal('hide')
+
+    // After 5 seconds, close modal 5 and open modal 6
+    setTimeout(function () {
+        $('#exampleModalToggle5').modal('hide')
+        openModal6()
+    }, 5000) // 5000 milliseconds = 5 seconds
+}
+function openModal6(){
+    $('#exampleModalToggle6').modal('show')
+}
+function backToModal4(){
+    $('#exampleModalToggle4').modal('show')
+    $('#exampleModalToggle5').modal('hide')
+}
 
 
 
 
+
+//to limit the pin input to four
+function limitPinTo4(input){
+    if (input.value.length > 4) {
+        input.value = input.value.slice(0, 4)
+    }
+}
+limitPinTo4()

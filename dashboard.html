@@ -246,7 +246,7 @@
                             <i class="icofont-ui-add m-auto"></i>
                             <figcaption>Add Money</figcaption>
                         </div>
-                        <div class="mnge-bills-box d-flex align-items-center" id="openModal1">
+                        <div class="mnge-bills-box d-flex align-items-center" onclick="openModal1()">
                             <i class="icofont-exchange m-auto"></i>
                             <figcaption>Transfer</figcaption>
                         </div>
@@ -263,7 +263,7 @@
                                             <img src="dashboard images/piggy icon.webp" alt="" id="piggy-icon">
                                             <span>To PiggyVest Account</span>
                                         </button>
-                                        <button class="d-flex flex-col w-100 btn btn-outline-dark align-items-center gap-4" id="openModal2">
+                                        <button class="d-flex flex-col w-100 btn btn-outline-dark align-items-center gap-4" onclick="openModal2()">
                                             <i class="icofont-bank-alt bank-icon"></i>
                                             <span>To Other Bank Accounts</span>
                                         </button>
@@ -276,7 +276,7 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button class="border-0 back-arrow-modal" id="backToModal1">
+                                        <button class="border-0 back-arrow-modal" onclick="backToModal1()">
                                             <i class="icofont-arrow-left arrow-icon"></i>
                                         </button>
                                         <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Transfer To Other Bank Accounts</h1>
@@ -303,7 +303,7 @@
                                         </p>
                                     </div>
                                     <div class="modal-footer m-auto w-100">
-                                        <button type="button" class="btn btn-primary w-100" id="openModal3" onclick="validateAccounts()">Next</button>
+                                        <button type="button" class="btn btn-primary w-100" onclick="openModal3()">Next</button>
                                     </div>
                                 </div>
                             </div>
@@ -311,36 +311,115 @@
                         <!-- Modal 3 -->
                         <div class="modal fade" id="exampleModalToggle3" tabindex="-1" aria-labelledby="exampleModalToggleLabel3" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">Modal 3</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                Show the fourth modal and hide this one with the button below.
-                                </div>
-                                <div class="modal-footer">
-                                <button class="btn btn-primary" id="openModal4">Open fourth modal</button>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="border-0 back-arrow-modal" onclick="backToModal2()">
+                                            <i class="icofont-arrow-left arrow-icon"></i>
+                                        </button>
+                                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">Confirm Amount</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex flex-column align-items-center justify-content-center mt-0">
+                                            <p id="theFoundName" class="mb-0">tao</p>
+                                            <div class="mt-0">
+                                                <span id="theFoundBank"></span>
+                                                <span id="theFoundAcct"></span>
+                                            </div>
+                                        </div>
+                                        <form action="">
+                                            <label for="amountToSend" class="amountlabel">Amount:₦</label>
+                                            <input type="number" id="amountToSend" placeholder="Enter amount you want to send">
+                                            <label for="narration" class="amountlabel">Narration(Optional):</label>
+                                            <input type="text" id="narration" placeholder="What is the money for?">
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary w-100" onclick="openModal4()">Confirm</button>
+                                    </div>
                                 </div>
                             </div>
-                            </div>
-                        </div>
-                        
+                        </div>                       
                         <!-- Modal 4 -->
                         <div class="modal fade" id="exampleModalToggle4" tabindex="-1" aria-labelledby="exampleModalToggleLabel4" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalToggleLabel4">Modal 4</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button class="border-0 back-arrow-modal" onclick="backToModal3()">
+                                        <i class="icofont-arrow-left arrow-icon"></i>
+                                    </button>
+                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel4">Confirm Recipient Details</h1>
                                 </div>
                                 <div class="modal-body">
-                                Show the first modal and hide this one with the button below.
+                                    <p id="foundAmountToSend" class="text-center"></p>
+                                    <div class="d-grid">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title" id="fadeBank">Bank:</span>
+                                            <span class="bold-ans" id="boldBank"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Account:</span>
+                                            <span class="bold-ans" id="boldAcct"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Name:</span>
+                                            <span class="bold-ans" id="boldName"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Amount:</span>
+                                            <span class="bold-ans" id="boldAmount"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Narration:</span>
+                                            <span class="bold-ans" id="boldNarration">No narration</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Transaction fee:</span>
+                                            <span class="bold-ans">₦0.00</span>
+                                        </div>
+                                    </div>
+                                    <form action="" class="d-flex flex-column justify-content-center align-items-center">
+                                        <label for="pin" class="mb-2">Enter Your Pin</label>
+                                        <input type="number" id="pinInput" maxlength="4" oninput="limitPinTo4(this)">
+                                    </form>
                                 </div>
                                 <div class="modal-footer">
-                                <button class="btn btn-primary btn-close">Back to first modal</button>
+                                    <button type="button" class="btn btn-primary w-100" onclick="openModal5()">Proceed</button>
                                 </div>
                             </div>
+                            </div>
+                        </div>
+                        <!-- Modal 5 -->
+                        <div class="modal fade" id="exampleModalToggle5" tabindex="-1" aria-labelledby="exampleModalToggleLabel5" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="border-0 back-arrow-modal" onclick="backToModal4()">
+                                            <i class="icofont-arrow-left arrow-icon"></i>
+                                        </button>
+                                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel5">Performing Transfer</h1>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div class="custom-loader"></div>
+                                        </div>
+                                        <p class="please-wait">Please wait...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal 6 -->
+                        <div class="modal fade" id="exampleModalToggle6" tabindex="-1" aria-labelledby="exampleModalToggleLabel6" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body text-center">
+                                        <i class="icofont-check-circled check"></i>
+                                        <p class="successful">Transaction successful</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="ok">Download Receipt</span>
+                                            <span class="ok">Ok</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -557,7 +636,6 @@
     </main>
     <script src="dashboard.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>   
 </body>
 </html>

@@ -473,14 +473,130 @@ function backToModal4(){
 function closeLastModal(){
     $('#exampleModalToggle6').modal('hide')
 }
-
-
-
-
 //to limit the pin input to four
 function limitPinTo4(input){
     if (input.value.length > 4) {
         input.value = input.value.slice(0, 4)
     }
 }
-limitPinTo4()
+
+// show receipt 
+function showReceipt(){
+    //get current date and time
+    function getCurrentDateNTime(){
+        let currentDate = new Date()
+        let formattedDateNTime = currentDate.toLocaleString()
+        return formattedDateNTime
+    }
+    let transactionTime = document.getElementById("transactionTime")
+    transactionTime.innerText = getCurrentDateNTime()
+
+    //generate reference no
+    function generateTransRefNo(){
+        let transReference = document.getElementById("transReference")
+        
+        let savedRefNo = JSON.parse(localStorage.getItem("userRefId"))
+        if (savedRefNo === null){
+            let generateReferenceNo = Math.floor(Math.random() * 1000000000000000)
+            localStorage.setItem("userRefId", JSON.stringify(generateReferenceNo))
+            savedRefNo = generateReferenceNo
+        }
+        transReference.innerText = savedRefNo
+        
+    }
+    generateTransRefNo()
+
+    let savedAcctNo = JSON.parse(localStorage.getItem("userAcctNo"))
+    let savedReceiptUser = JSON.parse(localStorage.getItem("myUsers"));
+    let selectedAmountToSend = JSON.parse(localStorage.getItem("selectedAmountToSend"))
+    let selectedNarration = JSON.parse(localStorage.getItem("selectedNarration"))
+    let selectedRecipientAcctNo = JSON.parse(localStorage.getItem("selectedRecipientAcctNo"))
+    let selectedUserBank = JSON.parse(localStorage.getItem("selectedUserBank"))
+    let selectedFoundUserName = JSON.parse(localStorage.getItem("selectedFoundUserName"))
+
+    if(savedReceiptUser && savedAcctNo && selectedAmountToSend && selectedRecipientAcctNo && selectedUserBank && selectedFoundUserName){
+        let receiptNarration = document.getElementById("receiptNarration")
+        let boldReceiptAmount = document.getElementById("boldReceiptAmount")
+        let receiptBank = document.getElementById("receiptBank")
+        let receiptAcct = document.getElementById("receiptAcct")
+        let receiptName = document.getElementById("receiptName")
+        let ownerAcctNo = document.getElementById("ownerAcctNo")
+        let ownerAcctName = document.getElementById("ownerAcctName")
+
+        receiptNarration.innerText = selectedNarration
+        boldReceiptAmount.innerText = "₦" + selectedAmountToSend
+        receiptAcct.innerText = selectedRecipientAcctNo
+        receiptBank.innerText = selectedUserBank
+        receiptName.innerText = selectedFoundUserName
+        ownerAcctNo.innerText = savedAcctNo
+        ownerAcctName.innerText = savedReceiptUser[0].userNames
+    }
+    
+}
+
+function showModalAndDownload() {
+    showReceipt();
+
+    $('#exampleModalToggle7').modal('show');
+    $('#exampleModalToggle6').modal('hide');
+
+    setTimeout(function(){
+        let modalContent = document.getElementById("modalContent")
+        
+        //capture modal div as an image using html2canvas
+        html2canvas(modalContent).then(function (canvas) {
+            //convert canvas to image data url
+            let imgData = canvas.toDataURL("image/png")
+    
+            //create a downloadable link
+            let a = document.createElement("a")
+            a.href = imgData
+            a.download = 'div_content.png'
+            document.body.appendChild(a)
+    
+            //trigger a click event on the link to start the download
+            a.click()
+    
+            //remove th link from the DOM
+            document.body.removeChild(a)
+        })
+    },2000)
+}
+  
+
+
+//add money
+function makePayment() {
+    // Retrieve values from localStorage
+    let storedUsers = JSON.parse(localStorage.getItem("myUsers"));
+    currentUserIndex = 0
+    if (storedUsers && storedUsers.length > 0) {
+        let defaultName = storedUsers[currentUserIndex].userName;
+        let defaultEmail = storedUsers[currentUserIndex].userEmail;
+        let defaultNumber = storedUsers[currentUserIndex].userNumber;
+
+        FlutterwaveCheckout({
+            public_key: "FLWPUBK_TEST-ce9061e9d7a77e76873b46f24875dd62-X",
+            tx_ref: "titanic-48981487343MDI0NzMx",
+            amount: 54600,
+            currency: "NGN",
+            payment_options: "card, mobilemoneyghana, ussd",
+            redirect_url: "https://glaciers.titanic.com/handle-flutterwave-payment",
+            meta: {
+                consumer_id: 23,
+                consumer_mac: "92a3-912ba-1192a",
+            },
+            customer: {
+                email: defaultEmail,
+                phone_number: defaultNumber,
+                name: defaultName,
+            },
+            customizations: {
+                title: "Add money to account",
+                description: "Payment to add funds to piggyBank",
+                logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
+            },
+        });
+    }
+}
+

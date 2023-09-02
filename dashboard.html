@@ -242,8 +242,9 @@
                 </div>
                 <div class="bills-card2 d-flex flex-wrap gap-3 align-items-center">
                     <div class="d-flex flex-wrap gap-3">
-                        <div class="mnge-bills-box d-flex align-items-center">
+                        <div class="mnge-bills-box d-flex align-items-center" onclick="makePayment()">
                             <i class="icofont-ui-add m-auto"></i>
+                            <input type="number" id="addMoneyAmount" class="d-none" placeholder="Enter the amount">
                             <figcaption>Add Money</figcaption>
                         </div>
                         <div class="mnge-bills-box d-flex align-items-center" onclick="openModal1()">
@@ -422,11 +423,70 @@
                                         <i class="icofont-check-circled check"></i>
                                         <p class="successful">Transaction successful</p>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <span class="ok">Download Receipt</span>
+                                            <span class="ok" id="download-link" onclick="showModalAndDownload()">Download Receipt</span>
                                             <span class="ok" onclick="closeLastModal()">Ok</span>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <!-- modal 7, Receipt -->
+                        <div class="modal fade" id="exampleModalToggle7" tabindex="-1" aria-labelledby="exampleModalToggleLabel7" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content" id="modalContent">
+                                <div class="modal-header d-flex justify-content-center align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        <img src="dashboard images/piggy icon.webp" class="receipt-img" alt="">
+                                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel7">Transaction Receipt</h1>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <p id="boldReceiptAmount" class="text-center"></p>
+                                    <p id="transactionTime" class="text-center"></p>
+                                    <div class="d-grid gap-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title" id="fadeBank">Transaction Type:</span>
+                                            <span class="bold-ans">Transfer to other bank</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title" id="fadeBank">Recipient Bank:</span>
+                                            <span class="bold-ans" id="receiptBank"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Receipient Account Number:</span>
+                                            <span class="bold-ans" id="receiptAcct"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Recipient Name:</span>
+                                            <span class="bold-ans" id="receiptName"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Sender Name:</span>
+                                            <span class="bold-ans" id="ownerAcctName"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Sender Account Number:</span>
+                                            <span class="bold-ans" id="ownerAcctNo"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Narration:</span>
+                                            <span class="bold-ans" id="receiptNarration">No narration</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Transaction Reference:</span>
+                                            <span class="bold-ans" id="transReference"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fade-title">Transaction Status:</span>
+                                            <span class="bold-ans">Successful</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer text-center d-flex flex-col justify-content-center align-items-center">
+                                    <p class="generated-piggy">Generated from PiggyBank</p>
+                                </div>
+                            </div>
                             </div>
                         </div>
 
@@ -643,8 +703,10 @@
             </ul>
         </div>
     </main>
-    <script src="dashboard.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="dashboard.js"></script>
+    <!-- <script src="https://checkout.flutterwave.com/v3.js"></script> -->
 </body>
 </html>

@@ -10,7 +10,7 @@
 </head>
 <body>
     <main class="d-flex">
-        <!-- home aside -->
+        <!-- side nav -->
         <aside class="left position-sticky top-0">
             <div class="menulogo d-flex align-items-center gap-4">
                 <i class="icofont-navigation-menu aside-icon"></i>
@@ -228,7 +228,7 @@
             <div class="bills-card-div d-flex flex-wrap flex-row justify-content-between align-items-center w-100">
                 <div class="bills-card1">
                     <p class="card-total-bal">Total Balance</p>
-                    <p class="card-money" >₦1,014,757.02</p>
+                    <p class="card-money" id="cardMoney"></p>
                     <div class="accts-name-no-div d-flex justify-content-between align-items-center">
                         <span>
                             <p class="acct-name-tx">Account Name</p>
@@ -242,11 +242,36 @@
                 </div>
                 <div class="bills-card2 d-flex flex-wrap gap-3 align-items-center">
                     <div class="d-flex flex-wrap gap-3">
-                        <div class="mnge-bills-box d-flex align-items-center" onclick="makePayment()">
+
+                        <div class="mnge-bills-box d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="icofont-ui-add m-auto"></i>
-                            <input type="number" id="addMoneyAmount" class="d-none" placeholder="Enter the amount">
                             <figcaption>Add Money</figcaption>
                         </div>
+                        <!-- modal for add money  -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header d-flex justify-content-between align-items-center">
+                                    <button class="border-0 back-arrow-modal" onclick="leaveModal()">
+                                        <i class="icofont-arrow-left arrow-icon"></i>
+                                    </button>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Money</h1>
+                                    <span></span>
+                                </div>
+                                <div class="modal-body">
+                                  <label for="moneyToAdd" class="moneyLabel">Add Money(₦):</label>
+                                  <input type="number" id="moneyToAdd" placeholder="Enter amount you want to add to your account">
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" onclick="makePayment()">Proceed</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+
+
+
                         <div class="mnge-bills-box d-flex align-items-center" onclick="openModal1()">
                             <i class="icofont-exchange m-auto"></i>
                             <figcaption>Transfer</figcaption>
@@ -353,7 +378,7 @@
                                     <button class="border-0 back-arrow-modal" onclick="backToModal3()">
                                         <i class="icofont-arrow-left arrow-icon"></i>
                                     </button>
-                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel4">Confirm Recipient Details</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel4">Transfer Summary</h1>
                                     <span></span>
                                 </div>
                                 <div class="modal-body">
@@ -491,14 +516,7 @@
                         </div>
 
 
-
-
-
-
-
-
-
-
+                        
                         <div class="mnge-bills-box d-flex align-items-center">
                             <i class="icofont-pay m-auto"></i>
                             <figcaption>Pay Bills</figcaption>
@@ -706,7 +724,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script src="dashboard.js"></script>
-    <!-- <script src="https://checkout.flutterwave.com/v3.js"></script> -->
 </body>
 </html>

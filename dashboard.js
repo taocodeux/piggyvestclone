@@ -58,17 +58,12 @@ function dpStayOnLoad(){
 }
 dpStayOnLoad()
 
-
-
-
-
 //logout
 function logOut(){
     alert("logging out...")
     localStorage.removeItem("verifiedUser")
     window.location.href = "sign in.html"
 }
-
 
 //display block the acct div
 function goToAcctPage(){
@@ -117,7 +112,6 @@ function goToAcctPage(){
 
 }
 goToAcctPage()
-
 
 //display block the home div
 function goToHomePage(){
@@ -245,7 +239,6 @@ function generateorLoadAcctNo(){
 }
 generateorLoadAcctNo()
 
-
 //update the input value with the normal user details
 let nameContent = document.getElementById("full-name-modal")
 let emailContent = document.getElementById("email-modal")
@@ -268,7 +261,6 @@ let passwordModal = document.getElementById("password-modal")
 let numberModal = document.getElementById("number-modal")
 let pinModal = document.getElementById("pin-modal")
 let saveBtn = document.getElementById("foot-btn")
-
 
 let users = JSON.parse(localStorage.getItem("myUsers")) || [];
 
@@ -306,11 +298,10 @@ function closeTheModalDiv(){
 }
 closeTheModalDiv()
 
-
 //open the modals and validate account numbers
 let accountNumbers = {
     taoAcct: {
-        name: "Bamidele Taofikat",
+        name: "Badmus Odunayo",
         bank: "Access Bank",
         accountNumber: "0103430044"
     },
@@ -379,7 +370,6 @@ function updateFoundUserNames(){
     }
 }
 
-
 function openModal3(){
     let selectedRecipientAcctNo = JSON.parse(localStorage.getItem("selectedRecipientAcctNo"))
     let selectedUserBank = JSON.parse(localStorage.getItem("selectedUserBank"))
@@ -405,7 +395,6 @@ function backToModal2(){
     $('#exampleModalToggle3').modal('hide')
     $('#exampleModalToggle2').modal('show')
 }
-
 function openModal4(){
     let amountToSend = document.getElementById("amountToSend")
     let narration = document.getElementById("narration")
@@ -462,8 +451,36 @@ function openModal5(){
         alert("Incorrect Transaction pin")
     }
 }
+//initialize the user balance
+let userBalance = JSON.parse(localStorage.getItem("newUserBal")) || 500000
+
+//update the user balance html
+function updateUserBal(){
+    let userBal = document.getElementById("cardMoney")
+    userBal.innerText = "₦" + userBalance.toLocaleString()
+}
+updateUserBal()
+
 function openModal6(){
-    $('#exampleModalToggle6').modal('show')
+    let selectedAmountToSend = JSON.parse(localStorage.getItem("selectedAmountToSend")) 
+    
+    if(selectedAmountToSend > userBalance){
+        alert("Insufficient balance")
+        openModal3()
+        return
+    }else{
+        $('#exampleModalToggle6').modal('show')
+        //deduct money sent from userbal
+        userBalance -= selectedAmountToSend
+        localStorage.setItem("newUserBal", JSON.stringify(userBalance))
+
+        updateUserBal()
+    }
+}
+let storedUserBal = JSON.parse(localStorage.getItem("newUserBal"))
+if(storedUserBal){
+    userBalance = storedUserBal
+    updateUserBal()
 }
 function backToModal4(){
     $('#exampleModalToggle4').modal('show')
@@ -472,6 +489,9 @@ function backToModal4(){
 
 function closeLastModal(){
     $('#exampleModalToggle6').modal('hide')
+}
+function leaveModal(){
+    $('#exampleModal').modal('hide')
 }
 //to limit the pin input to four
 function limitPinTo4(input){
@@ -562,26 +582,41 @@ function showModalAndDownload() {
         })
     },2000)
 }
-  
+
+//update the userbal and store to localstorage
+let newUserBal = JSON.parse(localStorage.getItem("newUserBal"))
+userBalance = newUserBal
+
+function updateBalAndSave(){
+    let userBal = document.getElementById("cardMoney")
+    userBal.innerText = "₦" + userBalance.toLocaleString()
+}
+updateBalAndSave()
 
 
-//add money
 function makePayment() {
+    let amountToAdd = parseFloat(document.getElementById("moneyToAdd").value)
+    if(amountToAdd <= 0){
+        alert("please fill in a valid amount to add")
+    }else{
+        localStorage.setItem("amountToAdd", JSON.stringify(amountToAdd))
+    }
+
+    let storedAmount = JSON.parse(localStorage.getItem("amountToAdd"))
     // Retrieve values from localStorage
     let storedUsers = JSON.parse(localStorage.getItem("myUsers"));
-    currentUserIndex = 0
-    if (storedUsers && storedUsers.length > 0) {
-        let defaultName = storedUsers[currentUserIndex].userName;
-        let defaultEmail = storedUsers[currentUserIndex].userEmail;
-        let defaultNumber = storedUsers[currentUserIndex].userNumber;
+    if (storedUsers && storedUsers.length > 0 && storedAmount) {
+        let defaultName = storedUsers[0].userName;
+        let defaultEmail = storedUsers[0].userEmail;
+        let defaultNumber = storedUsers[0].userNumber;
 
         FlutterwaveCheckout({
             public_key: "FLWPUBK_TEST-ce9061e9d7a77e76873b46f24875dd62-X",
             tx_ref: "titanic-48981487343MDI0NzMx",
-            amount: 54600,
+            amount: amountToAdd,
             currency: "NGN",
-            payment_options: "card, mobilemoneyghana, ussd",
-            redirect_url: "https://glaciers.titanic.com/handle-flutterwave-payment",
+            payment_options: "card, banktransfer, ussd",
+            redirect_url: "dashboard.html",
             meta: {
                 consumer_id: 23,
                 consumer_mac: "92a3-912ba-1192a",
@@ -596,7 +631,22 @@ function makePayment() {
                 description: "Payment to add funds to piggyBank",
                 logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
             },
-        });
+            callback: function(response){
+                if(response.status === "successful"){
+                    userBalance += storedAmount
+                    localStorage.setItem("newUserBal", JSON.stringify(userBalance))
+
+                    updateBalAndSave()
+                    setTimeout (function(){
+                        window.location.href = "dashboard.html"
+                    },3000)
+                    alert("payment successful")
+                }else{
+                    alert("payment failed!")
+                }
+            }
+        })
     }
 }
+makePayment()
 

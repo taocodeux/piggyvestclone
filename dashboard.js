@@ -493,6 +493,9 @@ function closeLastModal(){
 function leaveModal(){
     $('#exampleModal').modal('hide')
 }
+function leaveModal2(){
+    $('#exampleModal2').modal('hide')
+}
 //to limit the pin input to four
 function limitPinTo4(input){
     if (input.value.length > 4) {
@@ -551,7 +554,6 @@ function showReceipt(){
         ownerAcctNo.innerText = savedAcctNo
         ownerAcctName.innerText = savedReceiptUser[0].userNames
     }
-    
 }
 
 function showModalAndDownload() {
@@ -593,13 +595,15 @@ function updateBalAndSave(){
 }
 updateBalAndSave()
 
-
 function makePayment() {
     let amountToAdd = parseFloat(document.getElementById("moneyToAdd").value)
+    let prev_bal = localStorage.getItem("newUserBal")
     if(amountToAdd <= 0){
         alert("please fill in a valid amount to add")
     }else{
         localStorage.setItem("amountToAdd", JSON.stringify(amountToAdd))
+        new_bal = parseInt(prev_bal) + amountToAdd
+        localStorage.setItem("newUserBal", new_bal)
     }
 
     let storedAmount = JSON.parse(localStorage.getItem("amountToAdd"))
@@ -648,5 +652,7 @@ function makePayment() {
         })
     }
 }
-makePayment()
 
+
+//transaction history
+let transactionBody = document.getElementById("transaction-body")

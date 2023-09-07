@@ -521,10 +521,32 @@
                             <i class="icofont-pay m-auto"></i>
                             <figcaption>Pay Bills</figcaption>
                         </div>
-                        <div class="mnge-bills-box d-flex align-items-center">
+                        <div class="mnge-bills-box d-flex align-items-center" onclick="openTransactions()">
                             <i class="icofont-history m-auto"></i>
                             <figcaption>Transaction History</figcaption>
                         </div>
+                        <!-- modal for Transaction History -->
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header d-flex justify-content-between align-items-center">
+                                    <button class="border-0 back-arrow-modal" onclick="leaveModal2()">
+                                        <i class="icofont-arrow-left arrow-icon"></i>
+                                    </button>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel2">Transactions</h1>
+                                    <span></span>
+                                </div>
+                                <div class="modal-body">
+                                    <ul id="transaction-body">
+                                        
+                                    </ul>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+
+
                         <div class="mnge-bills-box d-flex align-items-center">
                             <i class="icofont-file-text m-auto"></i>
                             <figcaption>Generate Statement</figcaption>

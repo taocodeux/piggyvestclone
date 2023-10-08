@@ -446,6 +446,16 @@ function openModal5(){
         setTimeout(function () {
             $('#exampleModalToggle5').modal('hide')
             openModal6()
+            //get current date and time
+            function getCurrentDateNTime(){
+                let currentDate = new Date()
+                let formattedDateNTime = currentDate.toLocaleString()
+                return formattedDateNTime
+            }
+            let transactionTime = document.getElementById("transactionTime")
+            transactionTimeValue = getCurrentDateNTime()
+            transactionTime.innerText = transactionTimeValue
+            localStorage.setItem("transactionTime",JSON.stringify(transactionTimeValue))
         }, 5000)
     }else{
         alert("Incorrect Transaction pin")
@@ -461,6 +471,7 @@ function updateUserBal(){
 }
 updateUserBal()
 
+let transactionType = "received"
 function openModal6(){
     let selectedAmountToSend = JSON.parse(localStorage.getItem("selectedAmountToSend")) 
     
@@ -473,7 +484,8 @@ function openModal6(){
         //deduct money sent from userbal
         userBalance -= selectedAmountToSend
         localStorage.setItem("newUserBal", JSON.stringify(userBalance))
-
+        let transactionType = "sent"
+        localStorage.setItem("transactionType", JSON.stringify(transactionType))
         updateUserBal()
     }
 }
@@ -502,18 +514,8 @@ function limitPinTo4(input){
         input.value = input.value.slice(0, 4)
     }
 }
-
 // show receipt 
 function showReceipt(){
-    //get current date and time
-    function getCurrentDateNTime(){
-        let currentDate = new Date()
-        let formattedDateNTime = currentDate.toLocaleString()
-        return formattedDateNTime
-    }
-    let transactionTime = document.getElementById("transactionTime")
-    transactionTime.innerText = getCurrentDateNTime()
-
     //generate reference no
     function generateTransRefNo(){
         let transReference = document.getElementById("transReference")
@@ -653,6 +655,9 @@ function makePayment() {
     }
 }
 
+//save each transaction
+let eachTransaction ={
 
+}
 //transaction history
-let transactionBody = document.getElementById("transaction-body")
+let transactionHistoryArr = []

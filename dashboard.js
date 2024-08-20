@@ -1,14 +1,28 @@
+function redirectTo(page) {
+    window.location.href = page
+}
+
+// Check if the user is authenticated
+function checkAuthentication() {
+    let verifiedUser = JSON.parse(localStorage.getItem("verifiedUser"))
+    if (!verifiedUser) {
+        redirectTo("sign in.html");
+    }
+}
+
 //Update the user names
 function updateDashboard(){
     let verifiedUser = JSON.parse(localStorage.getItem("verifiedUser"))
 
     if (verifiedUser){
+        let userNames = verifiedUser.userNames
         document.getElementById("userfullName").innerHTML = `${verifiedUser.userNames},`
-        document.getElementById("useracctName").innerHTML = `${verifiedUser.userNames}`
-        document.getElementById("name-p").innerHTML = `${verifiedUser.userNames}`
-        document.getElementById("card-acct-name").innerHTML = `${verifiedUser.userNames}`
+        document.getElementById("useracctName").innerHTML = userNames
+        document.getElementById("name-p").innerHTML = userNames
+        document.getElementById("card-acct-name").innerHTML = userNames
     } else{
-        alert("no name found")
+        alert("no user information found")
+        redirectTo("sign in.html")
     }
 }
 updateDashboard()
@@ -108,16 +122,17 @@ function goToAcctPage(){
 
 
     // localStorage.setItem("currentPage", JSON.stringify(accountPage))
-    // localStorage.setItem("currentPage1", "accountPage")
+    localStorage.setItem("currentPage", "accountPage")
 
 }
-goToAcctPage()
+// goToAcctPage()
 
 //display block the home div
 function goToHomePage(){
     let homePage = document.getElementById("homePage")
     let accountPage = document.getElementById("account-page")
     let savingsPage = document.getElementById("savings-page")
+
     let activeAcct = document.getElementsByClassName("active-acct")[0]
     let activeHome = document.getElementsByClassName("active")[0]
     let activeSavings = document.getElementsByClassName("active-savings")[0]
@@ -155,9 +170,9 @@ function goToHomePage(){
 
 
     // localStorage.setItem("currentPage", JSON.stringify(homePage))
-    // localStorage.setItem("currentPage2", "homePage")
+    localStorage.setItem("currentPage", "homePage")
 }
-goToHomePage()
+// goToHomePage()
 
 //display block the savings page
 function goToSavingsPage(){ 
@@ -201,24 +216,24 @@ function goToSavingsPage(){
 
 
     // localStorage.setItem("currentPage", JSON.stringify(savingsPage))
-    // localStorage.setItem("currentPage3", "savingsPage")
+    localStorage.setItem("currentPage", "savingsPage")
 }
-goToSavingsPage()
-// Check if the page to display is stored in local storage
-// let currentPage1 = localStorage.getItem("currentPage1")
-// let currentPage2 = localStorage.getItem("currentPage2")
-// let currentPage3 = localStorage.getItem("currentPage3")
+// goToSavingsPage()
 
-// if (currentPage1 === "homePage") {
-//     goToHomePage()
-// } else if (currentPage2 === "savingsPage") {
-//     goToSavingsPage()
-// } else if (currentPage3 === "accountPage") {
-//     goToAcctPage()
-// } else {
-//     goToHomePage()
-// }
+function InitializePage(){
+    let currentPage = localStorage.getItem("currentPage")
 
+    if(currentPage === "homePage"){
+        goToHomePage()
+    }else if(currentPage === "accountPage"){
+        goToAcctPage()
+    }else if(currentPage === "savingsPage"){
+        goToSavingsPage()
+    }else{
+        goToHomePage()
+    }
+}
+InitializePage()
 
 
 // generate account number and to stay on refresh
@@ -232,10 +247,10 @@ function generateorLoadAcctNo(){
         let generatedNo = Math.floor(Math.random() * 10000000000)
         localStorage.setItem("userAcctNo", JSON.stringify(generatedNo))
         savedAcctNo = generatedNo // Update the saved value 
-    } else {
-        accountNumber.innerText = savedAcctNo // If the account number is already saved, use the saved value
-        cardAcctNo.innerText = savedAcctNo 
     }
+    accountNumber.innerText = savedAcctNo // If the account number is already saved, use the saved value
+    cardAcctNo.innerText = savedAcctNo 
+    
 }
 generateorLoadAcctNo()
 
@@ -461,15 +476,6 @@ function openModal5(){
         alert("Incorrect Transaction pin")
     }
 }
-//initialize the user balance
-let userBalance = JSON.parse(localStorage.getItem("newUserBal")) || 500000
-
-//update the user balance html
-function updateUserBal(){
-    let userBal = document.getElementById("cardMoney")
-    userBal.innerText = "₦" + userBalance.toLocaleString()
-}
-updateUserBal()
 
 let transactionType = "received"
 function openModal6(){
@@ -489,11 +495,7 @@ function openModal6(){
         updateUserBal()
     }
 }
-let storedUserBal = JSON.parse(localStorage.getItem("newUserBal"))
-if(storedUserBal){
-    userBalance = storedUserBal
-    updateUserBal()
-}
+
 function backToModal4(){
     $('#exampleModalToggle4').modal('show')
     $('#exampleModalToggle5').modal('hide')
@@ -587,31 +589,47 @@ function showModalAndDownload() {
     },2000)
 }
 
-//update the userbal and store to localstorage
-let newUserBal = JSON.parse(localStorage.getItem("newUserBal"))
-userBalance = newUserBal
+// Initialize the user balance
+let userBalance = localStorage.getItem("newUserBal")|| 500000;
 
-function updateBalAndSave(){
-    let userBal = document.getElementById("cardMoney")
-    userBal.innerText = "₦" + userBalance.toLocaleString()
+// Ensure userBalance is a number
+if (isNaN(userBalance)) {
+    userBalance = 500000;
+    localStorage.setItem("newUserBal", JSON.stringify(userBalance));
 }
-updateBalAndSave()
+
+// Update the user balance HTML
+function updateUserBal() {
+    let userBal = document.getElementById("cardMoney");
+    userBal.innerText = "₦" + userBalance.toLocaleString();
+}
+updateUserBal();
+
+// Update the user balance and store to localStorage
+function updateBalAndSave() {
+    localStorage.setItem("newUserBal", JSON.stringify(userBalance));
+    updateUserBal();
+}
 
 function makePayment() {
-    let amountToAdd = parseFloat(document.getElementById("moneyToAdd").value)
-    let prev_bal = localStorage.getItem("newUserBal")
-    if(amountToAdd <= 0){
-        alert("please fill in a valid amount to add")
-    }else{
-        localStorage.setItem("amountToAdd", JSON.stringify(amountToAdd))
-        new_bal = parseInt(prev_bal) + amountToAdd
-        localStorage.setItem("newUserBal", new_bal)
+    let amountToAdd = parseFloat(document.getElementById("moneyToAdd").value);
+    let prev_bal = JSON.parse(localStorage.getItem("newUserBal")); // Correctly parse the previous balance
+
+    // Validate amountToAdd
+    if (isNaN(amountToAdd) || amountToAdd <= 0) {
+        alert("Please fill in a valid amount to add");
+        return; // Exit the function early if validation fails
     }
 
-    let storedAmount = JSON.parse(localStorage.getItem("amountToAdd"))
-    // Retrieve values from localStorage
+    // Update user balance
+    userBalance = prev_bal + amountToAdd;
+
+    // Store new balance in localStorage
+    localStorage.setItem("newUserBal", JSON.stringify(userBalance));
+
+    // Retrieve stored user information
     let storedUsers = JSON.parse(localStorage.getItem("myUsers"));
-    if (storedUsers && storedUsers.length > 0 && storedAmount) {
+    if (storedUsers && storedUsers.length > 0) {
         let defaultName = storedUsers[0].userName;
         let defaultEmail = storedUsers[0].userEmail;
         let defaultNumber = storedUsers[0].userNumber;
@@ -637,23 +655,24 @@ function makePayment() {
                 description: "Payment to add funds to piggyBank",
                 logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
             },
-            callback: function(response){
-                if(response.status === "successful"){
-                    userBalance += storedAmount
-                    localStorage.setItem("newUserBal", JSON.stringify(userBalance))
+            callback: function (response) {
+                if (response.status === "successful") {
+                    userBalance += amountToAdd;
+                    localStorage.setItem("newUserBal", JSON.stringify(userBalance));
 
-                    updateBalAndSave()
-                    setTimeout (function(){
-                        window.location.href = "dashboard.html"
-                    },3000)
-                    alert("payment successful")
-                }else{
-                    alert("payment failed!")
+                    updateBalAndSave();
+                    setTimeout(function () {
+                        window.location.href = "dashboard.html";
+                    }, 3000);
+                    alert("Payment successful");
+                } else {
+                    alert("Payment failed!");
                 }
             }
-        })
+        });
     }
 }
+
 
 //save each transaction
 let eachTransaction ={

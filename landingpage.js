@@ -3,10 +3,10 @@ let navbar = document.getElementById("navbar")
 
 function updateNavbarBackground() {
   if (window.scrollY > 0) {
-    navbar.classList.remove("bg-transparent")
+    navbar.classList.remove("bg-white")
     navbar.classList.add("scrolled-color")
   } else {
-    navbar.classList.add("bg-transparent")
+    navbar.classList.add("bg-white")
     navbar.classList.remove("scrolled-color")
   }
 }

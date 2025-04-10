@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    /* outline: 2px solid red; */
 }
 body{
     background-image: url(piggydashboardbg.svg);
@@ -632,9 +633,12 @@ header{
 .bills-card2{
     padding: 16px;
     border: 1px solid #E2E8F0;
-    width: 640px;
+    width: 100%;
     height: auto;
     border-radius: 8px 8px 8px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(191px, 1fr));
+    gap: 16px;
 }
 .card-total-bal{
     color: #083e9e;
@@ -679,7 +683,7 @@ header{
     color: #E7439C
 }
 .mnge-bills-box{
-    width: 191px;
+    /* width: 191px; */
     height: auto;
     border-radius: 8px 8px 8px 0;
     background-color: #083E9E;
@@ -694,10 +698,20 @@ header{
 .mnge-bills-box:hover{
     background-color: #062863;
 }
+.big-card-div{
+    padding: 16px;
+    border: 1px solid #E2E8F0;
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 8px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
 .big-card{
-    padding: 32px 24px 10px 24px;
+    padding: 10px;
     border-radius: 20px 20px 20px 10px;
-    width: 320px;
+    /* width: 320px; */
     height: auto;
     /* background-color: red; */
 }
@@ -904,7 +918,7 @@ header{
 
 
 
-@media (max-width: 667px){
+@media (max-width: 768px){
     .left{
         display: none;
     }
@@ -1138,7 +1152,7 @@ header{
         height: auto;
         border-radius: 8px 8px 8px 0;
     }
-    .bills-card2{
+    .bills-card2, .big-card-div{
         padding: 16px;
         border: 1px solid #E2E8F0;
         width: 100%;
@@ -1146,8 +1160,8 @@ header{
         border-radius: 8px 8px 8px 0;
         margin-top: 15px;
     }
-    .mnge-bills-box{
-        width: 159px;
+    .mnge-bills-box, .big-card{
+        /* width: 159px; */
         height: auto;
         border-radius: 8px 8px 8px 0;
         background-color: #083E9E;
@@ -1159,20 +1173,6 @@ header{
         font-weight: 600;
         font-size: 14px;
     }    
-    .big-card-container{
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: -18px;
-        margin-bottom: 40px;
-    }
-    .big-card{
-        padding: 32px 24px 10px 24px;
-        border-radius: 20px 20px 20px 10px;
-        width: 176px;
-        height: auto;
-        /* background-color: red; */
-    }
     .savings-page{
         width: 100%;
         height: 100vh;

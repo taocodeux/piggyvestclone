@@ -6,7 +6,7 @@ function redirectTo(page) {
 function checkAuthentication() {
     let verifiedUser = JSON.parse(localStorage.getItem("verifiedUser"))
     if (!verifiedUser) {
-        redirectTo("sign in.html");
+        redirectTo("sign in.html")
     }
 }
 
@@ -29,34 +29,31 @@ updateDashboard()
 
 //change dp
 function changeDp(event){
-    let file = event.target.files[0] //to get the selected img file from folder using event and store in a variable, the index 0 means the first img file if the user selected a multiple image and the files is the selected files from the folder
-    let reader = new FileReader() //a new filereader is created to read the files
+    let file = event.target.files[0] 
+    let reader = new FileReader() 
 
-    reader.onload = function(event){  //after reading file the reader.onload function is called
-        let fileContentUrl = event.target.result //the event.target.result contains the file content in data url form
-        let userProfile = document.getElementById("userProfile") //get img html by id
+    reader.onload = function(event){  
+        let fileContentUrl = event.target.result 
+        let userProfile = document.getElementById("userProfile") 
         let acctDp = document.getElementById("acct-dp")
         let changeacctdp = document.getElementById("changed-acct-dp")
-        // let editPictureModal = document.getElementById("edit-picture-modal")
         let savingsDp = document.getElementById("savingsdp")
 
         userProfile.src = fileContentUrl
         acctDp.src = fileContentUrl  
         changeacctdp.src = fileContentUrl     
-        // editPictureModal.src = fileContentUrl  
         savingsDp.src = fileContentUrl
         
         localStorage.setItem("userProfileImage",JSON.stringify(fileContentUrl))
     }
-    reader.readAsDataURL(file) //the reader should read the selected image as a data url
+    reader.readAsDataURL(file) 
 }
 
     //to make the picture stay on load
 function dpStayOnLoad(){
-    let userProfile = document.getElementById("userProfile") //get img html by id
+    let userProfile = document.getElementById("userProfile") 
     let acctDp = document.getElementById("acct-dp")
     let changeacctdp = document.getElementById("changed-acct-dp")
-    // let editPictureModal = document.getElementById("edit-picture-modal")
     let savingsDp = document.getElementById("savingsdp")
     let storedImage = JSON.parse(localStorage.getItem("userProfileImage"))
 
@@ -64,7 +61,6 @@ function dpStayOnLoad(){
         userProfile.src = storedImage
         acctDp.src = storedImage
         changeacctdp.src = storedImage  
-        // editPictureModal.src = storedImage  
         savingsDp.src = storedImage
     }else{
         console.log("no picture seen")
@@ -103,10 +99,10 @@ function goToAcctPage(){
     accountPage.style.display = "block"
     activeHome.style.color = "#fff"
     activeHome.style.backgroundColor = "transparent"
-    activeHome.style.padding = "0";
+    activeHome.style.padding = "0"
     activeSavings.style.color = "#fff"
     activeSavings.style.backgroundColor = "transparent"
-    activeSavings.style.padding = "0";
+    activeSavings.style.padding = "0"
     activeAcct.style.color = "#083E9E"
     activeAcct.style.backgroundColor = "#fff"
     activeAcct.style.padding = "4px 40px 4px 24px"
@@ -121,11 +117,9 @@ function goToAcctPage(){
 
 
 
-    // localStorage.setItem("currentPage", JSON.stringify(accountPage))
     localStorage.setItem("currentPage", "accountPage")
 
 }
-// goToAcctPage()
 
 //display block the home div
 function goToHomePage(){
@@ -154,11 +148,11 @@ function goToHomePage(){
     activeHome.style.color = "#083E9E"
     activeHome.style.backgroundColor = "#fff"
     activeHome.style.padding = "4px 40px 4px 24px"
-    activeAcct.style.padding = "0";
+    activeAcct.style.padding = "0"
     activeHome.style.borderRadius = "8px 8px 8px 0"
     activeSavings.style.color = "#fff"
     activeSavings.style.backgroundColor = "transparent"
-    activeSavings.style.padding = "0";
+    activeSavings.style.padding = "0"
     homeDown.style.color = "#083E9E"
     savingsDown.style.color = "#A0AEC0"
     acctDown.style.color = "#A0AEC0"
@@ -169,10 +163,8 @@ function goToHomePage(){
 
 
 
-    // localStorage.setItem("currentPage", JSON.stringify(homePage))
     localStorage.setItem("currentPage", "homePage")
 }
-// goToHomePage()
 
 //display block the savings page
 function goToSavingsPage(){ 
@@ -197,10 +189,10 @@ function goToSavingsPage(){
     homePage.style.display = "none"
     activeAcct.style.color = "#fff"
     activeAcct.style.backgroundColor = "transparent"
-    activeAcct.style.padding = "0";
+    activeAcct.style.padding = "0"
     activeHome.style.color = "#fff"
     activeHome.style.backgroundColor = "transparent"
-    activeHome.style.padding = "0";
+    activeHome.style.padding = "0"
     activeSavings.style.color = "#083E9E"
     activeSavings.style.backgroundColor = "#fff"
     activeSavings.style.padding = "4px 40px 4px 24px"
@@ -215,10 +207,8 @@ function goToSavingsPage(){
 
 
 
-    // localStorage.setItem("currentPage", JSON.stringify(savingsPage))
     localStorage.setItem("currentPage", "savingsPage")
 }
-// goToSavingsPage()
 
 function InitializePage(){
     let currentPage = localStorage.getItem("currentPage")
@@ -241,14 +231,14 @@ function generateorLoadAcctNo(){
     let accountNumber = document.getElementById("acct-number")
     let cardAcctNo = document.getElementById("card-acct-no")
 
-    let savedAcctNo = JSON.parse(localStorage.getItem("userAcctNo")) //check if the acctno is saved already
+    let savedAcctNo = JSON.parse(localStorage.getItem("userAcctNo")) 
     
-    if (savedAcctNo === null) {   // If the account number is not already saved, generate and save it
+    if (savedAcctNo === null) {   
         let generatedNo = Math.floor(Math.random() * 10000000000)
         localStorage.setItem("userAcctNo", JSON.stringify(generatedNo))
-        savedAcctNo = generatedNo // Update the saved value 
+        savedAcctNo = generatedNo
     }
-    accountNumber.innerText = savedAcctNo // If the account number is already saved, use the saved value
+    accountNumber.innerText = savedAcctNo 
     cardAcctNo.innerText = savedAcctNo 
     
 }
@@ -277,7 +267,7 @@ let numberModal = document.getElementById("number-modal")
 let pinModal = document.getElementById("pin-modal")
 let saveBtn = document.getElementById("foot-btn")
 
-let users = JSON.parse(localStorage.getItem("myUsers")) || [];
+let users = JSON.parse(localStorage.getItem("myUsers")) || []
 
 function saveNewDetails(){
     users[currentUserIndex].userNames = fullNameModal.value
@@ -461,7 +451,6 @@ function openModal5(){
         setTimeout(function () {
             $('#exampleModalToggle5').modal('hide')
             openModal6()
-            //get current date and time
             function getCurrentDateNTime(){
                 let currentDate = new Date()
                 let formattedDateNTime = currentDate.toLocaleString()
@@ -487,7 +476,6 @@ function openModal6(){
         return
     }else{
         $('#exampleModalToggle6').modal('show')
-        //deduct money sent from userbal
         userBalance -= selectedAmountToSend
         localStorage.setItem("newUserBal", JSON.stringify(userBalance))
         let transactionType = "sent"
@@ -518,7 +506,6 @@ function limitPinTo4(input){
 }
 // show receipt 
 function showReceipt(){
-    //generate reference no
     function generateTransRefNo(){
         let transReference = document.getElementById("transReference")
         
@@ -534,7 +521,7 @@ function showReceipt(){
     generateTransRefNo()
 
     let savedAcctNo = JSON.parse(localStorage.getItem("userAcctNo"))
-    let savedReceiptUser = JSON.parse(localStorage.getItem("myUsers"));
+    let savedReceiptUser = JSON.parse(localStorage.getItem("myUsers"))
     let selectedAmountToSend = JSON.parse(localStorage.getItem("selectedAmountToSend"))
     let selectedNarration = JSON.parse(localStorage.getItem("selectedNarration"))
     let selectedRecipientAcctNo = JSON.parse(localStorage.getItem("selectedRecipientAcctNo"))
@@ -561,78 +548,74 @@ function showReceipt(){
 }
 
 function showModalAndDownload() {
-    showReceipt();
+    showReceipt()
 
-    $('#exampleModalToggle7').modal('show');
-    $('#exampleModalToggle6').modal('hide');
+    $('#exampleModalToggle7').modal('show')
+    $('#exampleModalToggle6').modal('hide')
 
     setTimeout(function(){
         let modalContent = document.getElementById("modalContent")
         
         //capture modal div as an image using html2canvas
         html2canvas(modalContent).then(function (canvas) {
-            //convert canvas to image data url
             let imgData = canvas.toDataURL("image/png")
     
-            //create a downloadable link
             let a = document.createElement("a")
             a.href = imgData
             a.download = 'div_content.png'
             document.body.appendChild(a)
     
-            //trigger a click event on the link to start the download
             a.click()
     
-            //remove th link from the DOM
             document.body.removeChild(a)
         })
     },2000)
 }
 
 // Initialize the user balance
-let userBalance = localStorage.getItem("newUserBal")|| 500000;
+let userBalance = localStorage.getItem("newUserBal")|| 500000
 
 // Ensure userBalance is a number
 if (isNaN(userBalance)) {
-    userBalance = 500000;
-    localStorage.setItem("newUserBal", JSON.stringify(userBalance));
+    userBalance = 500000
+    localStorage.setItem("newUserBal", JSON.stringify(userBalance))
 }
 
 // Update the user balance HTML
 function updateUserBal() {
-    let userBal = document.getElementById("cardMoney");
-    userBal.innerText = "₦" + userBalance.toLocaleString();
+    let userBal = document.getElementById("cardMoney")
+    userBal.innerText = "₦" + userBalance.toLocaleString()
 }
-updateUserBal();
+updateUserBal()
 
 // Update the user balance and store to localStorage
 function updateBalAndSave() {
-    localStorage.setItem("newUserBal", JSON.stringify(userBalance));
-    updateUserBal();
+    localStorage.setItem("newUserBal", JSON.stringify(userBalance))
+    updateUserBal()
 }
 
 function makePayment() {
-    let amountToAdd = parseFloat(document.getElementById("moneyToAdd").value);
-    let prev_bal = JSON.parse(localStorage.getItem("newUserBal")); // Correctly parse the previous balance
+    let amountToAdd = parseFloat(document.getElementById("moneyToAdd").value)
+    let prev_bal = JSON.parse(localStorage.getItem("newUserBal")) 
 
     // Validate amountToAdd
     if (isNaN(amountToAdd) || amountToAdd <= 0) {
-        alert("Please fill in a valid amount to add");
-        return; // Exit the function early if validation fails
+        alert("Please fill in a valid amount to add")
+        return 
     }
 
     // Update user balance
-    userBalance = prev_bal + amountToAdd;
+    userBalance = prev_bal + amountToAdd
 
     // Store new balance in localStorage
-    localStorage.setItem("newUserBal", JSON.stringify(userBalance));
+    localStorage.setItem("newUserBal", JSON.stringify(userBalance))
 
     // Retrieve stored user information
-    let storedUsers = JSON.parse(localStorage.getItem("myUsers"));
+    let storedUsers = JSON.parse(localStorage.getItem("myUsers"))
     if (storedUsers && storedUsers.length > 0) {
-        let defaultName = storedUsers[0].userName;
-        let defaultEmail = storedUsers[0].userEmail;
-        let defaultNumber = storedUsers[0].userNumber;
+        let defaultName = storedUsers[0].userName
+        let defaultEmail = storedUsers[0].userEmail
+        let defaultNumber = storedUsers[0].userNumber
 
         FlutterwaveCheckout({
             public_key: "FLWPUBK_TEST-ce9061e9d7a77e76873b46f24875dd62-X",
@@ -657,19 +640,19 @@ function makePayment() {
             },
             callback: function (response) {
                 if (response.status === "successful") {
-                    userBalance += amountToAdd;
-                    localStorage.setItem("newUserBal", JSON.stringify(userBalance));
+                    userBalance += amountToAdd
+                    localStorage.setItem("newUserBal", JSON.stringify(userBalance))
 
-                    updateBalAndSave();
+                    updateBalAndSave()
                     setTimeout(function () {
-                        window.location.href = "dashboard.html";
-                    }, 3000);
-                    alert("Payment successful");
+                        window.location.href = "dashboard.html"
+                    }, 3000)
+                    alert("Payment successful")
                 } else {
-                    alert("Payment failed!");
+                    alert("Payment failed!")
                 }
             }
-        });
+        })
     }
 }
 

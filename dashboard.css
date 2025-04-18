@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
-    /* outline: 2px solid red; */
 }
 body{
     background-image: url(piggydashboardbg.svg);
@@ -84,7 +83,6 @@ li{
     background: none;
 }
 header{
-    /* background: #5a5a5a; */
     width: 100%;
     height: auto;
 }
@@ -153,7 +151,6 @@ header{
     border-radius: 8px 8px 8px 0;
 }
 .refresh{
-    /* position: absolute; */
     font-weight: 700;
     font-size: 20px;
 }
@@ -243,12 +240,9 @@ header{
     width: 300px;
     border-radius: 10px;
     margin-top: -7px;
-    /* height: 200px; */
 }
 .tododiv{
     margin-top: -7px;
-    /* margin: 0 0 12px; */
-    /* padding: 15px 16px; */
 }
 .safelockp{
     color: #424a57;
@@ -271,7 +265,6 @@ header{
     font-weight: 400;
     text-align: left;
     margin-bottom: 0;
-    /* margin-top: -10px; */
 }
 .recent-point1{
     color: #4A5568;
@@ -287,7 +280,6 @@ header{
     line-height: 18px;
     font-weight: 400;
     text-align: left;
-    /* margin-top: 0; */
     margin-bottom: 0;
 }
 .recent-act3{
@@ -310,7 +302,6 @@ header{
     border: 1px solid #CFDBE0;
     border-radius: 8px 8px 8px 0;
     padding: 17px;
-    /* background-color: red; */
 }
 .recent-cards{
     width: 650px;
@@ -318,7 +309,6 @@ header{
     border: 1px solid #E2E8F0;
     border-radius: 8px 8px 8px 0;
     padding: 17px;
-    /* background-color: red; */
 }
 .last-card{
     width: 650px;
@@ -333,7 +323,6 @@ header{
     line-height: 21px;
     text-align: center;
     text-transform: uppercase;
-    /* background-color: red; */
 }
 .last-card:hover{
     color: #073481;
@@ -381,7 +370,6 @@ header{
 }
 .btn-img{
     width: 140px;
-    /* height: 100px; */
 }
 .btn-img-div{
     margin-top: -7px;
@@ -464,29 +452,19 @@ header{
     padding: 15px;
     display: grid;
     place-content: left;
-    /* align-items: center; */
-    /* gap: 20px; */
 }
 .cover-img{
-    /* background-color: red; */
     width: fit-content;
     margin: auto;
     display: grid;
-    /* place-content: center; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
 }
 .cover-img:hover .label-img{
-    /* display: block; */
     visibility: visible;
 }
 .cover-div-acct{
-    /* gap: 200px; */
     gap: 70px;
 }
 .img-card-div{
-    /* padding: 0 32px; */
     margin-top: -15px;
 }
 .name-under{
@@ -500,7 +478,6 @@ header{
     line-height: 30px;
     font-weight: 600;
     margin-top: -5px;
-    /* margin-bottom: 0; */
 }
 .acct-no-tx{
     font-size: 14px;
@@ -515,34 +492,26 @@ header{
 
 }
 .parent-modal{
-    /* position: relative; */
     cursor: pointer;
 }
 .modal-div{
     width: 33%;
     height: 100vh;
     background-color: #fff;
-    /* border-left: #EBEBEB; */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
     right: 0;
     top: 0;
-    /* bottom: 0; */
     display: none;
     z-index: 1;
     overflow-y: scroll;
-    /* transition: right 0.3s ease-in; */
 }
-/* .parent-modal:focus-within .modal-div {
-  display: block;
-} */
 .nav-modal{
     background-color: #fff;
     padding: 32px 32px 24px;
     position: sticky;
     top: 0;
     z-index: 10;
-    /* bottom: 0; */
 }
 .icofont-close{
     color: #e7439c;
@@ -553,7 +522,6 @@ header{
     padding: 20px 32px 40px;
     z-index: -2;
     margin-bottom: 200px;
-    /* overflow-y: auto;  */
 }
 .footer-modal{
     background-color: #fff;
@@ -561,7 +529,6 @@ header{
     padding: 8px 32px 16px;
     position: fixed;
     bottom: 0;
-    /* height: 400px; */
 }
 .title-modal{
     color: #0D60D8;
@@ -612,7 +579,6 @@ header{
     line-height: 30px;
     font-weight: 700;
     margin: 15px 0;
-    /* line-height: 36px; */
 }
 .savings-header{
     padding: 24px 0 0;
@@ -683,7 +649,6 @@ header{
     color: #E7439C
 }
 .mnge-bills-box{
-    /* width: 191px; */
     height: auto;
     border-radius: 8px 8px 8px 0;
     background-color: #083E9E;
@@ -711,9 +676,7 @@ header{
 .big-card{
     padding: 10px;
     border-radius: 20px 20px 20px 10px;
-    /* width: 320px; */
     height: auto;
-    /* background-color: red; */
 }
 .big-card:nth-child(1){
     background-color: #ccf0fe;
@@ -957,17 +920,14 @@ header{
     }
     .head{
         margin-top: -15px;
-        /* padding: 0px 20px 24px; */
     }
     .cardContainer{
-        /* padding: 0px 20px 20px 24px; */
         margin-top: 0px;
     }
     .cardd{
         width: 270px;
         height: 110px;
         border-radius: 8px 8px 8px 0;
-        /* overflow-y: none; */
     }
     .cardContainer{
         width: 100%;
@@ -995,11 +955,9 @@ header{
         border: 1px solid #CFDBE0;
         border-radius: 8px 8px 8px 0;
         padding: 17px;
-        /* background-color: red; */
     }
     .btn-img{
         width: 50%;
-        /* height: 100px; */
     }
     .btn-img-div{
         width: 100%;
@@ -1011,7 +969,6 @@ header{
         border: 1px solid #E2E8F0;
         border-radius: 8px 8px 8px 0;
         padding: 17px;
-        /* background-color: red; */
     }
     .last-card{
         width: 100%;
@@ -1027,15 +984,12 @@ header{
         text-align: center;
         text-transform: uppercase;
         margin-bottom: 30px;
-        /* background-color: red; */
     }
     .tododiv{
         width: 100%;
-        /* padding: 0 22px 0 0; */
         
     }
     .cover-div-acct{
-        /* gap: 200px; */
         flex-direction: column-reverse;
         gap: 70px;
     }
@@ -1065,8 +1019,6 @@ header{
         padding: 15px;
         display: grid;
         place-content: left;
-        /* align-items: center; */
-        /* gap: 20px; */
     }
     .left-card{
         border: 1px solid #CFDBE0;
@@ -1093,16 +1045,13 @@ header{
         width: 100%;
         height: 100vh;
         background-color: #fff;
-        /* border-left: #EBEBEB; */
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         position: fixed;
         right: 0;
         top: 0;
-        /* bottom: 0; */
         display: none;
         z-index: 1;
         overflow-y: scroll;
-        /* transition: right 0.3s ease-in; */
     }
     .nav-modal{
         background-color: #fff;
@@ -1110,13 +1059,11 @@ header{
         position: sticky;
         top: 0;
         z-index: 10;
-        /* bottom: 0; */
     }
     .form-acct-div{
         padding: 12px 32px 28px;
         z-index: -2;
         margin-bottom: 250px;
-        /* overflow-y: auto;  */
     }
 
     .changed-acct-dp{
@@ -1136,8 +1083,6 @@ header{
         font-size: 15px;
         line-height: 30px;
         font-weight: 700;
-        /* margin: 15px 0; */
-        /* line-height: 36px; */
     }
     .savings-header{
         width: 100%;
@@ -1161,7 +1106,6 @@ header{
         margin-top: 15px;
     }
     .mnge-bills-box, .big-card{
-        /* width: 159px; */
         height: auto;
         border-radius: 8px 8px 8px 0;
         background-color: #083E9E;
